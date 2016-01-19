@@ -8,7 +8,7 @@ When a music student is learning to read music, they are often sent home to prac
 2. Not practice because they are unsure/discouraged/bored.
 
 ### User Stories
-[Click here to see user stories](https://github.com/dctabion/note-reading-tutor/blob/master/docs/UserStories.md)
+[Click here to see user stories](https://github.com/dctabion/note-reading-tutor/blob/master/documentation/UserStories.md)
 
 ### Wire Frames
 [Click here to see initial wire frames](https://github.com/dctabion/note-reading-tutor/tree/master/documentation/wireframes)
