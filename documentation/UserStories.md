@@ -1,9 +1,3 @@
-# BACKGROUND
-When a music student is learning to read music, they are often sent home to practice out of a book. Without guidance/supervision, it's not uncommon for a student to:
-
-1. Not realize they are making mistakes
-2. Not practice because they are unsure/discouraged/bored.
-
 # USER STORIES
 ### Teacher
 REGISTRATION<br>
