@@ -1,6 +1,9 @@
 # note-reading-tutor
 An app that tutors a student on note reading and collects results which can then be viewed by their teacher.
 
+### Deployment
+[Click here to try the app! 159.203.113.6](159.203.113.6)
+
 ### Background
 When a music student is learning to read music, they are often sent home to practice out of a book. Without guidance/supervision, it's not uncommon for a student to:
 
