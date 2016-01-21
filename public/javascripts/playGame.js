@@ -1,5 +1,6 @@
 window.onload = function() {
   console.log('game.js is running!!');
+  testHelper();
 
   var flashcard = document.getElementById('flashcard');
   var note = document.getElementById('note');
