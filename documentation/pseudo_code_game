@@ -1,0 +1,35 @@
+INITIALIZE
+load sounds fonts
+get MIDI access
+
+display loading
+when done loading
+
+display click to start
+user click to start
+
+GAME PLAY
+while (still cards in the deck)
+  save start_time
+  pull random card from deck
+  show card
+  wait for input
+  play note
+  check input
+  if correct adjust score
+    correct feedback
+    inc attempt
+    inc completed
+    inc total time by end_time - start_time
+  if incorrect
+    incorrect feedback
+    inc attempt
+    go back to wait for input
+END loop
+
+GAME OVER - no more cards
+stop listening for input
+display results
+indicate if new personal best!!
+report results
+ask if play again???
