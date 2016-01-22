@@ -1,8 +1,19 @@
 // delete this TODO
-var tone;
-var ctx, soundfont, instrument;
-var theButton;
-var currentCard;
+
+var flashApp = flashApp || {};
+
+flashApp.resources = {
+  "sound-font": false,
+  "midi": false
+};
+flashApp.currentCard = 0;
+flashApp.theButton = null;
+
+flashApp.soundfont = flashApp.soundfont || {};
+flashApp.soundfont.ctx = null;
+flashApp.soundfont.soundfont = null;
+flashApp.soundfont.instrument = null;
+
 
 
 window.onload = function() {
@@ -19,19 +30,12 @@ window.onload = function() {
   var userNoteDisplayed = document.getElementById('userNoteDisplayed');
   userNoteDisplayed.style.display = 'none';
 
-  // Setup soundfonts
-  ctx = new AudioContext();
-  soundfont = new Soundfont(ctx);
-  // instrument = soundfont.instrument('music_box');
-  instrument = soundfont.instrument('acoustic_grand_piano');
-  theButton = document.getElementById('soundfontTestButton');
+  // Setup game page
+  var statusMsg = document.getElementById('status_msg');
 
-  // when instrument is loaded
-  instrument.onready(function(){
-    // TODO click to play!!
-    console.log('ready!!')
-    setTestButtonTones(theButton, instrument, ctx);
-  });
+  // Setup soundfonts
+  setup_soundFont();
+
 
   // On click, generate a card and draw
   flashcard.addEventListener('click', function(){
