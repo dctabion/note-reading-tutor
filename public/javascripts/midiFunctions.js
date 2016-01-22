@@ -1,4 +1,14 @@
 // midi functions
+function setupMidiAccess() {
+  if (navigator.requestMIDIAccess) {
+      navigator.requestMIDIAccess({
+          sysex: false
+      }).then(onMIDISuccess, onMIDIFailure);
+  } else {
+      alert("No MIDI support in your browser.");
+  }
+}
+
 function onMIDISuccess(midi) {
     console.log('onMIDISucess() - got MIDI access');
     // when we get a succesful response, run this code

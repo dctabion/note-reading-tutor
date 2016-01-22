@@ -1,5 +1,5 @@
 
-function setup_soundFont() {
+function setupSoundfont() {
   flashApp.soundfont.ctx = new AudioContext();
   flashApp.soundfont.soundfont= new Soundfont(flashApp.soundfont.ctx);
   // instrument = soundfont.instrument('music_box');
@@ -9,7 +9,7 @@ function setup_soundFont() {
   // when instrument is loaded
   flashApp.soundfont.instrument.onready(function(){
     // TODO click to play!!
-    console.log('ready!!')
+    console.log('soundfont loaded!!')
     setTestButtonTones(flashApp.theButton, flashApp.soundfont.instrument, flashApp.soundfont.ctx);
   });
 }

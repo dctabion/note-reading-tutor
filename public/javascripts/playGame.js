@@ -24,23 +24,12 @@ window.onload = function() {
   userNoteDisplayed.style.display = 'none';
   var statusMsg = document.getElementById('status_msg');
   statusMsg.innerHTML = "Loading game.  Please wait...";
-  // SETUP Soundfonts ========================================
-  // playing instrument sounds, aka soundfonts
-  setup_soundFont();
+
+  // SETUP Soundfonts: playing instrumental sounds, aka soundfonts========================================
+  setupSoundfont();
 
   // SETUP MIDI ========================================
-  // request MIDI access
-  if (navigator.requestMIDIAccess) {
-      navigator.requestMIDIAccess({
-          sysex: false
-      }).then(onMIDISuccess, onMIDIFailure);
-  } else {
-      alert("No MIDI support in your browser.");
-  }
-
-
-
-
+  setupMidiAccess();
 
   // SETUP GAME ========================================
   // create a new deck of cards
