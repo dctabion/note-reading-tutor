@@ -52,7 +52,7 @@ function noteOn(midiNote, velocity){
     // if in range, draw the note
     if(midiNote >= 1 && midiNote <= 108) {
       noteName = midiNoteToNoteName[midiNote];
-      flashApp.soundfont.instrument.play(noteName,flashApp.soundfont.ctx.currentTime, 3);
+      flashApp.soundfont.instrument.play(noteName,flashApp.soundfont.ctx.currentTime, 1);
       console.log('noteName: ' + noteName);
       userNoteDisplayed.style.top = noteNameToPosition[noteName];
       userNoteDisplayed.style.display = 'block';

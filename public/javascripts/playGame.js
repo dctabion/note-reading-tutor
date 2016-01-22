@@ -16,6 +16,14 @@ flashApp.soundfont.instrument = null;
 window.onload = function() {
   console.log('game.js is running!!');
 
+  // Grab UI elements ============================
+  var flashcard = document.getElementById('flashcard');
+  var flashcardNote = document.getElementById('flashcardNote');
+  flashcardNote.style.display = 'none';
+  var userNoteDisplayed = document.getElementById('userNoteDisplayed');
+  userNoteDisplayed.style.display = 'none';
+  var statusMsg = document.getElementById('status_msg');
+  statusMsg.innerHTML = "Loading game.  Please wait...";
   // SETUP Soundfonts ========================================
   // playing instrument sounds, aka soundfonts
   setup_soundFont();
@@ -30,18 +38,14 @@ window.onload = function() {
       alert("No MIDI support in your browser.");
   }
 
+
+
+
+
   // SETUP GAME ========================================
   // create a new deck of cards
   var flashcards = allCards;
   console.log(flashcards);
-
-  // Grab UI elements
-  var flashcard = document.getElementById('flashcard');
-  var flashcardNote = document.getElementById('flashcardNote');
-  flashcardNote.style.display = 'none';
-  var userNoteDisplayed = document.getElementById('userNoteDisplayed');
-  userNoteDisplayed.style.display = 'none';
-  var statusMsg = document.getElementById('status_msg');
 
   // TODO remove this eventually
   // On click, generate a card and draw
