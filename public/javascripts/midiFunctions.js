@@ -64,11 +64,14 @@ function noteOn(midiNote, velocity){
       noteName = midiNoteToNoteName[midiNote];
       flashApp.soundfont.instrument.play(noteName,flashApp.soundfont.ctx.currentTime, 1);
       console.log('noteName: ' + noteName);
-      userNoteDisplayed.style.top = noteNameToPosition[noteName];
-      userNoteDisplayed.style.display = 'block';
+      flashApp.els.userNote.style.top = noteNameToPosition[noteName];
+      flashApp.els.userNote.style.display = 'block';
 
       // does it match the flash card?
-
+      
+      // no, shake and switch card
+      // flashApp.els.userNote.classList.remove('shake');
+      // flashApp.els.userNote.classList.add('shake');
     }
   }
 
@@ -77,7 +80,7 @@ function noteOn(midiNote, velocity){
     // TODO kill note
 
     // Hide note
-    userNoteDisplayed.style.display = 'none';
+    // flashApp.els.userNote.style.display = 'none';
   }
   console.log('noteOn()');
 }

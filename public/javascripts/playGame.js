@@ -5,7 +5,11 @@ flashApp.resources = {
   "midi": false
 };
 flashApp.currentCard = 0;
-flashApp.theButton = null;
+
+flashApp.els = flashApp.els || {};
+flashApp.els.userNote = null;
+flashApp.els.flashCardNote = null;
+flashApp.els.theButton = null;
 
 flashApp.soundfont = flashApp.soundfont || {};
 flashApp.soundfont.ctx = null;
@@ -17,11 +21,11 @@ window.onload = function() {
   console.log('game.js is running!!');
 
   // Grab UI elements ============================
-  var flashcard = document.getElementById('flashcard');
-  var flashcardNote = document.getElementById('flashcardNote');
-  flashcardNote.style.display = 'none';
-  var userNoteDisplayed = document.getElementById('userNoteDisplayed');
-  userNoteDisplayed.style.display = 'none';
+  var flashcard =document.getElementById('flashcard');
+  flashApp.els.flashCardNote = document.getElementById('flashcardNote');
+  flashApp.els.flashCardNote.style.display = 'none';
+  flashApp.els.userNote = document.getElementById('userNote');
+  flashApp.els.userNote.style.display = 'none';
   var statusMsg = document.getElementById('status_msg');
   statusMsg.innerHTML = "Loading game.  Please wait...";
 
@@ -38,12 +42,13 @@ window.onload = function() {
 
   // TODO remove this eventually
   // On click, generate a card and draw
+  console.log(flashApp.els.flashCard);
   flashcard.addEventListener('click', function(){
     console.log('click');
-    flashcardNote.style.display = 'block';
+    flashApp.els.flashCardNote.style.display = 'block';
 
     var randCardIndex = getRandomInt(0, flashcards.length);
-    flashcardNote.style.top = noteNameToPosition[flashcards[randCardIndex]];
+    flashApp.els.flashCardNote.style.top = noteNameToPosition[flashcards[randCardIndex]];
   });
 
 };
