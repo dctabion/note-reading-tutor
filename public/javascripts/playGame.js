@@ -2,6 +2,8 @@
 var tone;
 var ctx, soundfont, instrument;
 var theButton;
+var currentCard;
+
 
 window.onload = function() {
   console.log('game.js is running!!');
@@ -20,12 +22,13 @@ window.onload = function() {
   // Setup soundfonts
   ctx = new AudioContext();
   soundfont = new Soundfont(ctx);
-  instrument = soundfont.instrument('music_box');
-  // instrument = soundfont.instrument('acoustic_grand_piano');
+  // instrument = soundfont.instrument('music_box');
+  instrument = soundfont.instrument('acoustic_grand_piano');
   theButton = document.getElementById('soundfontTestButton');
 
-  // Soundfont test button
+  // when instrument is loaded
   instrument.onready(function(){
+    // TODO click to play!!
     console.log('ready!!')
     setTestButtonTones(theButton, instrument, ctx);
   });

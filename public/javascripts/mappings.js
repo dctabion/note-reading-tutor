@@ -117,5 +117,4 @@ var midiNoteToNoteName = {
   "23": "B0",
   "22": "A#0",
   "21": "A0"
-
 };

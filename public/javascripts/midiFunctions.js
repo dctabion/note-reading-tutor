@@ -49,7 +49,6 @@ function noteOn(midiNote, velocity){
     console.log('playing a note');
 
     // if in range, draw the note
-    // TODO Remove hardcode. currently limited from C4-G5
     if(midiNote >= 1 && midiNote <= 108) {
       noteName = midiNoteToNoteName[midiNote];
       tone = instrument.play(noteName,ctx.currentTime, 5);
