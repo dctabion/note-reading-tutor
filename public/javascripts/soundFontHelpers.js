@@ -10,6 +10,8 @@ function setupSoundfont() {
   flashApp.soundfont.instrument.onready(function(){
     // TODO click to play!!
     console.log('soundfont ready!!');
+    flashApp.resources.soundfont = true;
+    areResourcesLoaded('soundfont');
   });
 
   // TODO delete this test code

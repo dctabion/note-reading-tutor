@@ -16,10 +16,12 @@ function onMIDISuccess(midi) {
     var inputs = midi.inputs.values();
     // loop over all available inputs and listen for any MIDI input
     for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
-        console.log('another input');
+        console.log('registering another input');
         // each time there is a midi message call the onMIDIMessage function
         input.value.onmidimessage = onMIDIMessage;
     }
+    console.log('done registering MIDI input(s)');
+    areResourcesLoaded('midi');
 }
 
 function onMIDIFailure(e) {
@@ -68,7 +70,7 @@ function noteOn(midiNote, velocity){
       flashApp.els.userNote.style.display = 'block';
 
       // does it match the flash card?
-      
+
       // no, shake and switch card
       // flashApp.els.userNote.classList.remove('shake');
       // flashApp.els.userNote.classList.add('shake');

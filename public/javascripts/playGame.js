@@ -1,7 +1,7 @@
-// Setup Global Namespace
+// Setup Global Namespace ======================
 var flashApp = flashApp || {};
 flashApp.resources = {
-  "sound-font": false,
+  "soundfont": false,
   "midi": false
 };
 flashApp.currentCard = 0;
@@ -16,7 +16,7 @@ flashApp.soundfont.ctx = null;
 flashApp.soundfont.soundfont = null;
 flashApp.soundfont.instrument = null;
 
-
+// Start Game App Here ======================
 window.onload = function() {
   console.log('game.js is running!!');
 

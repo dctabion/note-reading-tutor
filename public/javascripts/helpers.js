@@ -19,18 +19,22 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
 
-function allResourcesLoaded() {
+function areResourcesLoaded(resourceKey) {
   var allLoaded = false;
   var resources = flashApp.resources;
+
+  // set resource loaded to true
+  resources[resourceKey] = true;
+
   // Loop through all resources
   for (var key in resources) {
-    console.log("resources." + key + " :" + resources[key]);
-
+    // console.log("resources." + key + " :" + resources[key]);
     // if the current resource is still loading, stop the loop and return false
-    if (resource[key] == false) {
+    if (resources[key] == false) {
+      console.log(key + " is still loading...");
       return false;
     }
-
+    console.log('All resources loaded!!');
     // if it gets through the loop, then something all resources are loaded
     return true;
   }
