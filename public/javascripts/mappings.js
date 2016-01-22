@@ -11,9 +11,9 @@ var allCards = [
   "E4",
   "D4",
   "C4"
-]
+];
 
-var noteToPosition = {
+var noteNameToPosition = {
   "G5" : "11px",
   "F5" : "16px",
   "E5" : "22px",
@@ -27,3 +27,18 @@ var noteToPosition = {
   "D4" : "70px",
   "C4" : "76px"
 }
+
+var midiNoteToNoteName = {
+   "91": "G5",
+   "89": "F5",
+   "88": "E5",
+   "86": "D5",
+   "84": "C5",
+   "83": "B4",
+   "81": "A4",
+   "79": "G4",
+   "77": "F4",
+   "76": "E4",
+   "74": "D4",
+   "72": "C4"
+};

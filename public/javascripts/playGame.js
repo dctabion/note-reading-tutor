@@ -16,6 +16,8 @@ window.onload = function() {
   var flashcard = document.getElementById('flashcard');
   var flashcardNote = document.getElementById('flashcardNote');
   flashcardNote.style.display = 'none';
+  var userNoteDisplayed = document.getElementById('userNoteDisplayed');
+  userNoteDisplayed.style.display = 'none';
 
   // Setup soundfonts
   var ctx = new AudioContext();
@@ -45,7 +47,7 @@ window.onload = function() {
     flashcardNote.style.display = 'block';
 
     var randCardIndex = getRandomInt(0, flashcards.length);
-    flashcardNote.style.top = noteToPosition[flashcards[randCardIndex]];
+    flashcardNote.style.top = noteNameToPosition[flashcards[randCardIndex]];
   });
 
   // SETUP MIDI ========================================
@@ -106,13 +108,27 @@ window.onload = function() {
 
   function noteOn(midiNote, velocity){
     // Note pressed
-    if (velocity>0) {
+    if (velocity !=0) {
       // play note
-      tone = instrument.play('A0',ctx.currentTime, 5);
+      console.log('playing a note');
+
+      // if in range, draw the note
+      // TODO Remove hardcode. currently limited from C4-G5
+      if(midiNote >= 72 && midiNote <91) {
+        noteName = midiNoteToNoteName[midiNote];
+        tone = instrument.play(noteName,ctx.currentTime, 5);
+        console.log('noteName: ' + noteName);
+        userNoteDisplayed.style.top = noteNameToPosition[noteName];
+        userNoteDisplayed.style.display = 'block';
+      }
     }
+
     // Note released (velocity == 0)
     else {
-      // kill note
+      // TODO kill note
+
+      // Hide note
+      userNoteDisplayed.style.display = 'none';
     }
     console.log('noteOn()');
   }
