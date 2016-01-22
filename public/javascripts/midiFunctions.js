@@ -1,11 +1,12 @@
 // midi functions
-function onMIDISuccess(midiAccess) {
+function onMIDISuccess(midi) {
+    console.log('onMIDISucess() - got MIDI access');
     // when we get a succesful response, run this code
-    midi = midiAccess; // this is our raw MIDI data, inputs, outputs, and sysex status
-
+    // midi is our raw MIDI data, inputs, outputs, and sysex status
     var inputs = midi.inputs.values();
     // loop over all available inputs and listen for any MIDI input
     for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
+        console.log('another input');
         // each time there is a midi message call the onMIDIMessage function
         input.value.onmidimessage = onMIDIMessage;
     }
@@ -13,7 +14,7 @@ function onMIDISuccess(midiAccess) {
 
 function onMIDIFailure(e) {
     // when we get a failed response, run this code
-    log("No access to MIDI devices or your browser doesn't support WebMIDI API. Please use WebMIDIAPIShim " + e);
+    consol.log("No access to MIDI devices or your browser doesn't support WebMIDI API. Please use WebMIDIAPIShim " + e);
 }
 
 function onMIDIMessage(message) {
