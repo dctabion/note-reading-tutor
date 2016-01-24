@@ -37,15 +37,18 @@ function onMIDIMessage(message) {
   note = data[1],
   velocity = data[2];
 
-  switch(type){
-      case 144: // noteOn message
-          noteOn(note, velocity);
-          break;
-      case 128: // noteOff message
-          noteOff(note, velocity);
-          break;
+  // only respond to MIDI input if game is in progress
+  if (flashApp.game.inProgress == true) {
+    switch(type){
+        case 144: // noteOn message
+            noteOn(note, velocity);
+            break;
+        case 128: // noteOff message
+            noteOff(note, velocity);
+            break;
+    }
+    logger('MIDI data', data);
   }
-  logger('MIDI data', data);
 }
 
 function logger(label, data) {

@@ -45,4 +45,22 @@ function startGame() {
   console.log('startGame()');
   flashApp.els.statusMsg.innerHTML += 'All resources loaded!  Let\' rock!';
 
+  // Wait for user to click to start game
+  console.log(flashApp.els.flashCard);
+  flashApp.els.statusMsg.innerHTML += "<br>Click on the flashcard to start playing!";
+  flashApp.els.flashCard.addEventListener('click', function(){
+    // User Clicked
+    console.log('click');
+    flashApp.els.statusMsg.innerHTML = "Play the notes, dood!";
+
+    // Allow user input from MIDI device and set game into play mode
+    flashApp.game.inProgress = true;
+
+    // Display note
+    flashApp.els.flashCardNote.style.display = 'block';
+
+    // Choose a card from the deck and display
+    var randCardIndex = getRandomInt(0, flashApp.game.flashCards.length);
+    flashApp.els.flashCardNote.style.top = noteNameToPosition[flashApp.game.flashCards[randCardIndex]];
+  });
 }
