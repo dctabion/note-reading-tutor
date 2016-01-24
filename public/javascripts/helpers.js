@@ -35,7 +35,13 @@ function areResourcesLoaded(resourceKey) {
       return false;
     }
     console.log('All resources loaded!!');
+    flashApp.els.resourcesLoaded.dispatchEvent(flashApp.misc.allLoadedEvent);
     // if it gets through the loop, then something all resources are loaded
     return true;
   }
+}
+
+function startGame() {
+  console.log('startGame()');
+  flashApp.els.statusMsg.innerHTML += 'All resources loaded!  Let\' rock!';
 }

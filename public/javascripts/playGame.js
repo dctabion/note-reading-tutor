@@ -10,11 +10,12 @@ flashApp.els = flashApp.els || {};
 flashApp.els.userNote = null;
 flashApp.els.flashCardNote = null;
 flashApp.els.theButton = null;
-
 flashApp.soundfont = flashApp.soundfont || {};
 flashApp.soundfont.ctx = null;
 flashApp.soundfont.soundfont = null;
 flashApp.soundfont.instrument = null;
+
+flashApp.misc = flashApp.misc || {};
 
 // Start Game App Here ======================
 window.onload = function() {
@@ -26,8 +27,13 @@ window.onload = function() {
   flashApp.els.flashCardNote.style.display = 'none';
   flashApp.els.userNote = document.getElementById('userNote');
   flashApp.els.userNote.style.display = 'none';
-  var statusMsg = document.getElementById('status_msg');
-  statusMsg.innerHTML = "Loading game.  Please wait...";
+  flashApp.els.statusMsg = document.getElementById('status_msg');
+  flashApp.els.statusMsg.innerHTML = "Loading game.  Please wait...";
+
+  // SETUP Listener to Start game when all resources loaded
+  flashApp.misc.allLoadedEvent = new Event('allLoadedEvent');
+  flashApp.els.resourcesLoaded = document.getElementById('resourcesLoaded');
+  flashApp.els.resourcesLoaded.addEventListener('allLoadedEvent', startGame);
 
   // SETUP Soundfonts: playing instrumental sounds, aka soundfonts========================================
   setupSoundfont();
