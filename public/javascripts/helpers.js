@@ -43,24 +43,35 @@ function areResourcesLoaded(resourceKey) {
 
 function startGame() {
   console.log('startGame()');
-  flashApp.els.statusMsg.innerHTML += 'All resources loaded!  Let\' rock!';
+  flashApp.els.statusMsg.innerHTML += '<br>All resources loaded!  Let\' rock!';
 
   // Wait for user to click to start game
-  console.log(flashApp.els.flashCard);
   flashApp.els.statusMsg.innerHTML += "<br>Click on the flashcard to start playing!";
-  flashApp.els.flashCard.addEventListener('click', function(){
-    // User Clicked
-    console.log('click');
-    flashApp.els.statusMsg.innerHTML = "Play the notes, dood!";
+  flashApp.els.flashCard.addEventListener('click', startGameClick );
+};
 
-    // Allow user input from MIDI device and set game into play mode
-    flashApp.game.inProgress = true;
 
-    // Display note
-    flashApp.els.flashCardNote.style.display = 'block';
+function startGameClick() {
+  // User Clicked
+  console.log('click');
 
-    // Choose a card from the deck and display
-    var randCardIndex = getRandomInt(0, flashApp.game.flashCards.length);
-    flashApp.els.flashCardNote.style.top = noteNameToPosition[flashApp.game.flashCards[randCardIndex]];
-  });
-}
+  // create a new deck of cards
+  flashApp.game.flashCards = allCards;
+  console.log('Current Deck: ' + flashApp.game.flashCards);
+
+  // Remove event listener
+  flashApp.els.flashCard.removeEventListener('click', startGameClick);
+
+  flashApp.els.statusMsg.innerHTML = "Play the notes, dood!";
+
+  // Allow user input from MIDI device and set game into play mode
+  flashApp.game.inProgress = true;
+
+  // Display note
+  flashApp.els.flashCardNote.style.display = 'block';
+
+  // Choose a card from the deck and display
+  flashApp.game.randCardIndex = getRandomInt(0, flashApp.game.flashCards.length);
+  console.log('randCardindex: ' + flashApp.game.randCardIndex + ' card: ' + flashApp.game.flashCards[flashApp.game.randCardIndex]);
+  flashApp.els.flashCardNote.style.top = noteNameToPosition[flashApp.game.flashCards[flashApp.game.randCardIndex]];
+};

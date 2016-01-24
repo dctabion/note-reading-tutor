@@ -26,7 +26,7 @@ window.onload = function() {
   // Grab UI elements ============================
   flashApp.els.flashCard = document.getElementById('flashcard');
   flashApp.els.flashCardNote = document.getElementById('flashcardNote');
-  flashApp.els.flashCardNote.style.display = 'none';
+  // flashApp.els.flashCardNote.style.display = 'none';
   flashApp.els.userNote = document.getElementById('userNote');
   flashApp.els.userNote.style.display = 'none';
   flashApp.els.statusMsg = document.getElementById('status_msg');
@@ -44,9 +44,7 @@ window.onload = function() {
   setupMidiAccess();
 
   // SETUP GAME ========================================
-  // create a new deck of cards
-  flashApp.game.flashCards = allCards;
-  console.log(flashApp.game.flashCards);
+
 
 
 };
