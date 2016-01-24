@@ -21,7 +21,7 @@ window.onload = function() {
   console.log('game.js is running!!');
 
   // Grab UI elements ============================
-  var flashcard =document.getElementById('flashcard');
+  flashApp.els.flashCard = document.getElementById('flashcard');
   flashApp.els.flashCardNote = document.getElementById('flashcardNote');
   flashApp.els.flashCardNote.style.display = 'none';
   flashApp.els.userNote = document.getElementById('userNote');
@@ -43,7 +43,7 @@ window.onload = function() {
   // TODO remove this eventually
   // On click, generate a card and draw
   console.log(flashApp.els.flashCard);
-  flashcard.addEventListener('click', function(){
+  flashApp.els.flashCard.addEventListener('click', function(){
     console.log('click');
     flashApp.els.flashCardNote.style.display = 'block';
 
