@@ -71,7 +71,11 @@ function startGameClick() {
   flashApp.els.flashCardNote.style.display = 'block';
 
   // Choose a card from the deck and display
+  getRandomCardAndDisplay();
+};
+
+function getRandomCardAndDisplay() {
   flashApp.game.currentCardIndex = getRandomInt(0, flashApp.game.flashCards.length);
   console.log('index: ' + flashApp.game.currentCardIndex + ' card: ' + flashApp.game.flashCards[flashApp.game.currentCardIndex]);
   flashApp.els.flashCardNote.style.top = noteNameToPosition[flashApp.game.flashCards[flashApp.game.currentCardIndex]];
-};
+}

@@ -75,12 +75,26 @@ function noteOn(midiNote, velocity){
       // does it match the flash card?
       if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
         console.log('correct!');
+        flashApp.els.statusMsg.innerHTML = noteName + " CORRECT!";
+        // Remove card from Deck
+        flashApp.game.flashCards.splice(flashApp.game.currentCardIndex ,1);
+        console.log('current cards: ' + flashApp.game.flashCards);
+
+        // Choose new card
+        getRandomCardAndDisplay();
+
+        // Choose new card
       }
       else {
         console.log('wrong!');
-        // no, shake and switch card
-        flashApp.els.userNote.classList.remove('shake');
-        flashApp.els.userNote.classList.add('shake');
+        // TODO do something cool like hake and switch card
+        // flashApp.els.userNote.classList.add('incorrectAnswer');
+        flashApp.els.statusMsg.innerHTML = noteName + " is not the right note! <BR>Try again!";
+        // flashApp.els.userNote.style.fill = '#ace63c';
+        // flashApp.els.userNote.addEventListener('transitioned', function() {
+        //
+        // };
+      // )
       }
 
     }
