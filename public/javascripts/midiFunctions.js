@@ -73,10 +73,16 @@ function noteOn(midiNote, velocity){
       flashApp.els.userNote.style.display = 'block';
 
       // does it match the flash card?
+      if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
+        console.log('correct!');
+      }
+      else {
+        console.log('wrong!');
+        // no, shake and switch card
+        flashApp.els.userNote.classList.remove('shake');
+        flashApp.els.userNote.classList.add('shake');
+      }
 
-      // no, shake and switch card
-      // flashApp.els.userNote.classList.remove('shake');
-      // flashApp.els.userNote.classList.add('shake');
     }
   }
 
