@@ -44,4 +44,5 @@ function areResourcesLoaded(resourceKey) {
 function startGame() {
   console.log('startGame()');
   flashApp.els.statusMsg.innerHTML += 'All resources loaded!  Let\' rock!';
+
 }
