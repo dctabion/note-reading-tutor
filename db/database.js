@@ -24,9 +24,9 @@ mongoose.connection.on('connected', function() {
 });
 
 mongoose.connection.on('disconnected', function() {
-  console.log("Disconneced From Database >> flashNotes")
+  console.log("Disconneced From Database --> flashNotes")
 });
 
-mongoose.connection.on('error', function() {
+mongoose.connection.on('error', function(error) {
   console.log('There was an error connecting to the database! ' + error);
 });

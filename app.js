@@ -4,6 +4,7 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var passport = require('passport');
 
 var routes = require('./routes/index');
 var users = require('./routes/users');
@@ -11,6 +12,11 @@ var users = require('./routes/users');
 var app = express();
 
 var db = require('./db/database');
+
+var Teacher = require('./models/Teacher');
+// TODO remove these if not necessary
+// var Student = require(../models/Student);
+// var GamePlayed = require(../models/GamePlayed);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
