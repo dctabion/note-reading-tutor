@@ -32,7 +32,7 @@ app.use(passport.session());
 // done enabling sessions
 
 // configure passport
-var Account = require('./models/Account');
+var Account = require('./models/Models');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
