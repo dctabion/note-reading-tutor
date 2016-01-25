@@ -1,27 +1,29 @@
 var mongoose = require('mongoose');
 var passportLocalMongoose = require('passport-local-mongoose');
 
-var GameSchema = new mongoose.Schema({
+var GameResultSchema = new mongoose.Schema({
   cards: [{ letter: String, wrong_count: Number }],
   date: { type: Date, default: Date.now }
 });
 
-var StudentSchema = new mongoose.Schema({
+var StudentDataSchema = new mongoose.Schema({
+  teacherUsername: String,
+  username: String,
+  games: [GameResultSchema]
+});
+
+var AccountSchema = new mongoose.Schema({
   email: String,
   username: String,
   password: String,
   firstName: String,
-  lastName: String,
-  games: [GameSchema]
+  lastname: String,
+  isTeacher: Boolean,
+  students: [StudentDataSchema]  // Will use this if a teacher
 });
 
-var TeacherSchema = new mongoose.Schema({
-  email: String,
-  username: String,
-  password: String,
-  students: [StudentSchema]
-});
+AccountSchema.plugin(passportLocalMongoose);
 
-TeacherSchema.plugin(passportLocalMongoose);
-
-module.exports = mongoose.model('Teacher', TeacherSchema);
+module.exports = mongoose.model('GameResult', GameResultSchema);
+module.exports = mongoose.model('StudentData', StudentDataSchema);
+module.exports = mongoose.model('Account', AccountSchema);
