@@ -131,6 +131,7 @@ function checkIfCorrectAnswer(noteName) {
 
     // TODO update result object
     flashApp.game.results[currentCard] = flashApp.game.results[currentCard] + 1;
-    console.log('results: ' + flashApp.game.results);
   }
+
+  console.log('results: ', flashApp.game.results);
 }
