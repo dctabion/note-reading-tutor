@@ -5,21 +5,24 @@ var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
 
+// Add passport .. before database
 var passport = require('passport');
 var mongoose = require('mongoose');
 var LocalStrategy = require('passport-local').Strategy;
+// var FacebookStratgey = require('passport-facebook').Strategy;  // try this sometime
+// needs to be available before database
 
+// DATABASE Connection
+var db = require('./db/database');
+
+// ROUTES
 var routes = require('./routes/index');
 var accounts = require('./routes/accounts');
 
 var app = express();
 
-var db = require('./db/database');
-
-var Teacher = require('./models/Teacher');
-// TODO remove these if not necessary
-// var Student = require(../models/Student);
-// var GamePlayed = require(../models/GamePlayed);
+// MODELS
+var Teacher = require('./models/Models');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
