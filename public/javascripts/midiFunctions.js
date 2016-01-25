@@ -72,33 +72,11 @@ function noteOn(midiNote, velocity){
       flashApp.els.userNote.style.top = noteNameToPosition[noteName];
       flashApp.els.userNote.style.display = 'block';
 
-      // does it match the flash card?
-      if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
-        console.log('correct!');
-        flashApp.els.statusMsg.innerHTML = noteName + " CORRECT!";
-        // Remove card from Deck
-        flashApp.game.flashCards.splice(flashApp.game.currentCardIndex ,1);
-        console.log('current cards: ' + flashApp.game.flashCards);
-
-        // Choose new card
-        getRandomCardAndDisplay();
-
-        // Choose new card
-      }
-      else {
-        console.log('wrong!');
-        // TODO do something cool like hake and switch card
-        // flashApp.els.userNote.classList.add('incorrectAnswer');
-        flashApp.els.statusMsg.innerHTML = noteName + " is not the right note! <BR>Try again!";
-        // flashApp.els.userNote.style.fill = '#ace63c';
-        // flashApp.els.userNote.addEventListener('transitioned', function() {
-        //
-        // };
-      // )
+      checkIfCorrectAnswer(noteName);
       }
 
     }
-  }
+
 
   // Note released (velocity == 0)
   else {

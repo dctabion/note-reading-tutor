@@ -1,20 +1,3 @@
-
-/**
- * Randomize array element order in-place.
- * Using Durstenfeld shuffle algorithm.
- * http://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
- */
-
-function shuffleArray(array) {
-    for (var i = array.length - 1; i > 0; i--) {
-        var j = Math.floor(Math.random() * (i + 1));
-        var temp = array[i];
-        array[i] = array[j];
-        array[j] = temp;
-    }
-    return array;
-}
-
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min)) + min;
 }
@@ -78,4 +61,31 @@ function getRandomCardAndDisplay() {
   flashApp.game.currentCardIndex = getRandomInt(0, flashApp.game.flashCards.length);
   console.log('index: ' + flashApp.game.currentCardIndex + ' card: ' + flashApp.game.flashCards[flashApp.game.currentCardIndex]);
   flashApp.els.flashCardNote.style.top = noteNameToPosition[flashApp.game.flashCards[flashApp.game.currentCardIndex]];
+}
+
+function checkIfCorrectAnswer(noteName) {
+  // does it match the flash card?
+  if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
+    console.log('correct!');
+    flashApp.els.statusMsg.innerHTML = noteName + " CORRECT!";
+    // Remove card from Deck
+    flashApp.game.flashCards.splice(flashApp.game.currentCardIndex ,1);
+    console.log('current cards: ' + flashApp.game.flashCards);
+
+    // Choose new card
+    getRandomCardAndDisplay();
+
+    // Choose new card
+  }
+  else {
+    console.log('wrong!');
+    // TODO do something cool like hake and switch card
+    // flashApp.els.userNote.classList.add('incorrectAnswer');
+    flashApp.els.statusMsg.innerHTML = noteName + " is not the right note! <BR>Try again!";
+    // flashApp.els.userNote.style.fill = '#ace63c';
+    // flashApp.els.userNote.addEventListener('transitioned', function() {
+    //
+    // };
+  // )
+  }
 }
