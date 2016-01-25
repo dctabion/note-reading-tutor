@@ -106,9 +106,10 @@ function checkIfCorrectAnswer(noteName) {
     // };
   // )
 
-    flashApp.els.statusMsg.innerHTML = noteName + " is not the right note! <BR>Try again!";
+    flashApp.els.statusMsg.innerHTML = "OOOPS! " + noteName + " is not the right note! <BR>Try again!";
 
     var currentCard = flashApp.game.flashCards[flashApp.game.currentCardIndex];
+
     // TODO update result object
     flashApp.game.results[currentCard] = flashApp.game.results[currentCard] + 1;
     console.log('results: ' + flashApp.game.results);
