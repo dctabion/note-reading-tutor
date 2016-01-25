@@ -17,6 +17,7 @@ a {
   left: 50%;
   margin-top: -140px;
   margin-left: -140px;
+
 }
 
 #flashcardNote {
@@ -29,7 +30,8 @@ a {
 #userNote {
   position: absolute;
   width: 35px;
-  left:140px;
+  left:100px;
+  // left:140px;
   top:52px;
 }
 
@@ -67,10 +69,19 @@ a {
 }
 
 .incorrectAnswer {
-  fill: #ace63c;
+  fill: red;
 
-  // animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
-  // transform: translate3d(0, 0, 0);
-  // backface-visibility: hidden;
-  // perspective: 1000px;
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.correctAnswer {
+  fill: green;
+
+  animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+  transform: translate3d(0, 0, 0);
+  backface-visibility: hidden;
+  perspective: 1000px;
 }

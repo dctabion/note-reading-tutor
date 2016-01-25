@@ -77,38 +77,55 @@ function checkIfCorrectAnswer(noteName) {
     console.log('correct!');
     flashApp.els.statusMsg.innerHTML = noteName + " CORRECT!";
 
-    // Remove card from Deck
-    flashApp.game.flashCards.splice(flashApp.game.currentCardIndex ,1);
-    console.log('current cards: ' + flashApp.game.flashCards);
-    if (flashApp.game.flashCards.length == 0)
-    {
-      // stop accepting MIDI input and evaluating answers
-      flashApp.game.inProgress = false;
+    // Let transition finish and continue processing correctAnswer logic
+    flashApp.els.userNote.classList.add('correctAnswer');
+    setTimeout(function() {
+      console.log('got timeout');
 
-      // TODO Display results
-      flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!";
-      flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
-      console.log(flashApp.game.results);
-      // TODO Send results to server
+      // Visual Feedback.  Do something cool!
+      flashApp.els.userNote.classList.remove('correctAnswer');
+      flashApp.els.userNote.style.display = "none";
 
-    };
+      // Remove card from Deck
+      flashApp.game.flashCards.splice(flashApp.game.currentCardIndex ,1);
+      console.log('current cards: ' + flashApp.game.flashCards);
+      if (flashApp.game.flashCards.length == 0)
+      {
+        // stop accepting MIDI input and evaluating answers
+        flashApp.game.inProgress = false;
 
-    // Choose new card
-    getRandomCardAndDisplay();
+        // TODO Display results
+        flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!";
+        flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
+        console.log(flashApp.game.results);
+        // TODO Send results to server
+        // Choose new card
+      }
+      else{
+        getRandomCardAndDisplay();
+      }
+    },1000);
+  } // end correct answer
 
-    // Choose new card
-  }
   // Wrong answer
   else {
     console.log('wrong!');
-    // TODO do something cool like shake and switch card
-    // flashApp.els.userNote.classList.add('incorrectAnswer');
-    // flashApp.els.userNote.style.fill = '#ace63c';
-    // flashApp.els.userNote.addEventListener('transitioned', function() {
-    // };
-  // )
 
+    // Tell user he/she is wrong
     flashApp.els.statusMsg.innerHTML = "OOOPS! " + noteName + " is not the right note! <BR>Try again!";
+
+    // TODO do something cool like shake and switch card
+    // flashApp.els.userNote.addEventListener('transitionend', function() {
+    //   console.log('got transitionend');
+    //   flashApp.els.userNote.classList.remove('incorrectAnswer');
+    // }, true);
+    flashApp.els.userNote.classList.add('incorrectAnswer');
+    setTimeout(function() {
+      console.log('got timeout');
+      flashApp.els.userNote.classList.remove('incorrectAnswer');
+      flashApp.els.userNote.style.display = "none";
+    } ,1000);
+
 
     var currentCard = flashApp.game.flashCards[flashApp.game.currentCardIndex];
 
