@@ -38,7 +38,6 @@ passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 // end configuration for passport
 
-
 // MODELS
 var Teacher = require('./models/Models');
 

@@ -5,19 +5,25 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-
     <div id="header">
       <div id="nav-links">
-        <a href="">Teachers</a>
-        <a href="">Students</a>
+        <!-- <a href="">Teachers</a>
+        <a href="">Students</a> -->
+        <a href="/accounts/register">Teacher Registration</a>
       </div>
-      <div id="login-register">
-
+      <div>
         <form id="login" action="/users/login" method="post">
           <input type="text" name="name" value=""  placeholder="Username">
           <input type="password" name="password" value="" placeholder="Password">
           <input type="submit" name="name" value="Login">
         </form>
+      </div>
+      <div id="status-msg-header">
+        {{#if user}}
+          Welcome, {{user.username}}!
+        {{else}}
+          Hey! You should log in or register!
+        {{/if}}
       </div>
     </div>
     <div class="contentPanel">

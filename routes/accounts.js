@@ -1,22 +1,30 @@
 var express = require('express');
-var router = express.Router();
 var passport = require('passport');
+var LocalStrategy = require('passport-local').Strategy;
 var Account = require('../models/Models');
+var router = express.Router();
 
-/* GET users listing. */
+// configure passport
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+// end configuration for passport
+
 router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
+  res.render('index', {user: req.user});  // TODO fix this
 });
 
+router.get('/register', function(req, res){
+    res.render('register');
+});
 
-
-router.post('/register', function() {
+router.post('/register', function(req, res) {
   Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
     if (err) {
       return res.render('/', { account : account});
     }
     passport.authenticate('local')(req, res, function(){
-      res.redirect('/');
+      res.render('index');
     });
   });
 });

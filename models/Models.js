@@ -17,7 +17,7 @@ var AccountSchema = new mongoose.Schema({
   password: String, // required names for passport .. check DB to see what is actually saved!
   email: String,
   firstName: String,
-  lastname: String,
+  lastName: String,
   isTeacher: Boolean,
   students: [StudentDataSchema]  // Will use this if a teacher
 });
