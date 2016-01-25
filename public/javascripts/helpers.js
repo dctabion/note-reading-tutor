@@ -26,18 +26,21 @@ function areResourcesLoaded(resourceKey) {
 
 function startGame() {
   console.log('startGame()');
-  flashApp.els.statusMsg.innerHTML += '<br>All resources loaded!  Let\' rock!';
+  // Hide Loading Gif
+  flashApp.els.loadingGif.style.display = "none";
+
+  flashApp.els.statusMsg.innerHTML = 'Let\'s rock!';
 
   // Wait for user to click to start game
-  flashApp.els.statusMsg.innerHTML += "<br>Click on the flashcard to start playing!";
-  flashApp.els.flashCard.addEventListener('click', startGameClick );
+  flashApp.els.statusMsg.innerHTML += "<br>Click here to start playing!";
+  flashApp.els.statusMsg.addEventListener('click', startGameClick );
 };
 
 
 function startGameClick() {
   // User Clicked
   console.log('click');
-
+  flashApp.els.flashCard.style.display = "block";
   // create a new deck of cards
   flashApp.game.flashCards = allCards;
   console.log('Current Deck: ' + flashApp.game.flashCards);

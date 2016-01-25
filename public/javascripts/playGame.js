@@ -30,7 +30,11 @@ window.onload = function() {
   flashApp.els.userNote = document.getElementById('userNote');
   flashApp.els.userNote.style.display = 'none';
   flashApp.els.statusMsg = document.getElementById('status_msg');
+
+  // Show loading GIF and status msg
   flashApp.els.statusMsg.innerHTML = "Loading game.  Please wait...";
+  flashApp.els.loadingGif = document.getElementById('loadingGif');
+  flashApp.els.loadingGif.style.display = "block";
 
   // SETUP Listener to Start game when all resources loaded
   flashApp.misc.allLoadedEvent = new Event('allLoadedEvent');
