@@ -54,11 +54,13 @@ function onMIDIMessage(message) {
 function logger(label, data) {
     data = data || null;
     messages = label + " [channel: " + (data[0] & 0xf) + ", cmd: " + (data[0] >> 4) + ", type: " + (data[0] & 0xf0) + " , note: " + data[1] + " , velocity: " + data[2] + "]";
-    console.log(messages);
+    // console.log(messages);
 }
 
 
 function noteOn(midiNote, velocity){
+  console.log('noteOn()');
+
   // Note pressed
   if (velocity !=0) {
     // play note
@@ -81,11 +83,10 @@ function noteOn(midiNote, velocity){
   // Note released (velocity == 0)
   else {
     // TODO kill note
-
+    // not necessary since note will die automatically
     // Hide note
     // flashApp.els.userNote.style.display = 'none';
   }
-  console.log('noteOn()');
 }
 
 function noteOff(midiNote, velocity){

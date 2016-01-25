@@ -42,6 +42,14 @@ function startGameClick() {
   flashApp.game.flashCards = allCards;
   console.log('Current Deck: ' + flashApp.game.flashCards);
 
+  // initialize results object
+  flashApp.game.results = {};
+  for (var index in flashApp.game.flashCards) {
+    flashApp.game.results[flashApp.game.flashCards[index]] = 0;
+  }
+  console.log('Results: ', flashApp.game.results);
+
+
   // Remove event listener
   flashApp.els.flashCard.removeEventListener('click', startGameClick);
 
@@ -68,24 +76,41 @@ function checkIfCorrectAnswer(noteName) {
   if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
     console.log('correct!');
     flashApp.els.statusMsg.innerHTML = noteName + " CORRECT!";
+
     // Remove card from Deck
     flashApp.game.flashCards.splice(flashApp.game.currentCardIndex ,1);
     console.log('current cards: ' + flashApp.game.flashCards);
+    if (flashApp.game.flashCards.length == 0)
+    {
+      // stop accepting MIDI input and evaluating answers
+      flashApp.game.inProgress = false;
+
+      // TODO Display results
+
+      // TODO Send results to server
+
+    }
 
     // Choose new card
     getRandomCardAndDisplay();
 
     // Choose new card
   }
+  // Wrong answer
   else {
     console.log('wrong!');
-    // TODO do something cool like hake and switch card
+    // TODO do something cool like shake and switch card
     // flashApp.els.userNote.classList.add('incorrectAnswer');
-    flashApp.els.statusMsg.innerHTML = noteName + " is not the right note! <BR>Try again!";
     // flashApp.els.userNote.style.fill = '#ace63c';
     // flashApp.els.userNote.addEventListener('transitioned', function() {
-    //
     // };
   // )
+
+    flashApp.els.statusMsg.innerHTML = noteName + " is not the right note! <BR>Try again!";
+
+    var currentCard = flashApp.game.flashCards[flashApp.game.currentCardIndex];
+    // TODO update result object
+    flashApp.game.results[currentCard] = flashApp.game.results[currentCard] + 1;
+    console.log('results: ' + flashApp.game.results);
   }
 }
