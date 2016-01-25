@@ -1,4 +1,5 @@
 var mongoose = require('mongoose');
+var passportLocalMongoose = require('passport-local-mongoose');
 
 var GameSchema = new mongoose.Schema({
   cards: [{ letter: String, wrong_count: Number }],
@@ -20,3 +21,7 @@ var TeacherSchema = new mongoose.Schema({
   password: String,
   students: [StudentSchema]
 });
+
+TeacherSchema.plugin(passportLocalMongoose);
+
+module.exports = mongoose.model('Teacher', TeacherSchema);
