@@ -20,6 +20,24 @@ var routes = require('./routes/index');
 var accounts = require('./routes/accounts');
 
 var app = express();
+// Enable sessions immediately after starting app.
+// instantly enable sessions!
+app.use(require('express-session')({
+  secret: 'the dood has flown.  beware!',
+  resave: false,
+  saveUninitialized: false
+}));
+app.use(passport.initialize());
+app.use(passport.session());
+// done enabling sessions
+
+// configure passport
+var Account = require('./models/Account');
+passport.use(new LocalStrategy(Account.authenticate()));
+passport.serializeUser(Account.serializeUser());
+passport.deserializeUser(Account.deserializeUser());
+// end configuration for passport
+
 
 // MODELS
 var Teacher = require('./models/Models');
@@ -37,19 +55,8 @@ app.use(cookieParser());
 app.use(require('less-middleware')(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use(require('express-session')({
-    secret: 'keep it secret, keep it safe',
-    resave: false,
-    saveUninitialized: false
-}));
-app.use(passport.initialize());
-app.use(passport.session());
-
 app.use('/', routes);
 app.use('/accounts', accounts);
-
-
-
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
