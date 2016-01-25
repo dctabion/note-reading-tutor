@@ -5,11 +5,26 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <header>
-      <a href="">Teachers</a>
-      <a href="">Students</a>
-      <a href="/game">Game</a>
-    </header>
-    {{{body}}}
+
+    <div id="header">
+      <div id="nav-links">
+        <a href="">Teachers</a>
+        <a href="">Students</a>
+      </div>
+      <div id="login-register">
+
+        <form id="login" action="/login" method="post">
+          <input type="text" name="name" value=""  placeholder="Username">
+          <input type="password" name="password" value="" placeholder="Password">
+          <input type="submit" name="name" value="Login">
+        </form>
+      </div>
+    </div>
+    <div class="contentPanel">
+      <h1>{{title}}</h1>
+    </div>
+    <div>
+      {{{body}}}
+    </div>
   </body>
 </html>
