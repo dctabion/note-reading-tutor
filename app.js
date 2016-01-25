@@ -10,7 +10,7 @@ var mongoose = require('mongoose');
 var LocalStrategy = require('passport-local').Strategy;
 
 var routes = require('./routes/index');
-var users = require('./routes/users');
+var accounts = require('./routes/accounts');
 
 var app = express();
 
@@ -43,7 +43,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 app.use('/', routes);
-app.use('/users', users);
+app.use('/accounts', accounts);
 
 
 
