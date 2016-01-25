@@ -86,10 +86,12 @@ function checkIfCorrectAnswer(noteName) {
       flashApp.game.inProgress = false;
 
       // TODO Display results
-
+      flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!";
+      flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
+      console.log(flashApp.game.results);
       // TODO Send results to server
 
-    }
+    };
 
     // Choose new card
     getRandomCardAndDisplay();
