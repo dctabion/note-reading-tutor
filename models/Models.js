@@ -7,8 +7,8 @@ var GameResultSchema = new mongoose.Schema({
 });
 
 var StudentDataSchema = new mongoose.Schema({
-  teacherUsername: String,
-  username: String,
+  teacherID: String,
+  studentID: String,
   games: [GameResultSchema]
 });
 
@@ -18,8 +18,8 @@ var AccountSchema = new mongoose.Schema({
   email: String,
   firstName: String,
   lastName: String,
-  isTeacher: Boolean,
-  students: [StudentDataSchema]  // Will use this if a teacher
+  isTeacher: Boolean
+  // studentDataIDs: [Number]
 });
 
 AccountSchema.plugin(passportLocalMongoose);

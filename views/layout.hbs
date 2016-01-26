@@ -5,26 +5,34 @@
     <link rel='stylesheet' href='/stylesheets/style.css' />
   </head>
   <body>
-    <h2>Try to print user name here</h2>
-    <h2>{{title}}</h2>
-    <h2>{{user.username}}</h2>
+    <h1>{{title}}</h1>
     <div id="header">
       <div id="nav-links">
+        {{#if user.isTeacher}}
+        <a href="/teacher">Student Progress</a>
+        <a href="/accounts/add-student">Add Student</a>
+        <a href="/account/modify">Account</a>
+        {{/if}}
+        {{#unless user.isTeacher}}
         <a href="/">Play</a>
-        <a href="/accounts/register">Teacher Registration</a>
+        <a href="/account/modify">Account</a>
+        {{/unless}}
+        {{#if user }}
+        <a href="/accounts/logout">Logout</a>
+        {{/if}}
       </div>
       <div>
-        <form id="login" action="/users/login" method="post">
-          <input type="text" name="name" value=""  placeholder="Username">
+        {{#unless user }}
+        <form id="login" action="/accounts/login" method="post">
+          <input type="text" name="username" value=""  placeholder="Username">
           <input type="password" name="password" value="" placeholder="Password">
-          <input type="submit" name="name" value="Login">
+          <input type="submit" value="Login">
         </form>
+        {{/unless}}
       </div>
       <div id="status-msg-header">
         {{#if user}}
           Welcome, {{user.username}}!
-        {{else}}
-          Hey! You should log in or register!
         {{/if}}
       </div>
     </div>
