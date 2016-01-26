@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var Account = require('../models/Models');
+var Account = require('../models/Account');
 
 var siteData = {
   title: 'Flash Notes!!!'

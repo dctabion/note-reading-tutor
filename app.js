@@ -34,14 +34,15 @@ app.use(passport.session());
 // done enabling sessions
 
 // configure passport
-var Account = require('./models/Models');
+var Account = require('./models/Account');
 passport.use(new LocalStrategy(Account.authenticate()));
 passport.serializeUser(Account.serializeUser());
 passport.deserializeUser(Account.deserializeUser());
 // end configuration for passport
 
 // MODELS
-var Teacher = require('./models/Models');
+var Account = require('./models/Account');
+var StudentData = require('./models/StudentData')
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));

@@ -1,7 +1,8 @@
 var express = require('express');
 var passport = require('passport');
 var LocalStrategy = require('passport-local').Strategy;
-var Account = require('../models/Models');
+var Account = require('../models/Account');
+var StudentData = require('../models/StudentData');
 var router = express.Router();
 
 // configure passport
@@ -53,6 +54,7 @@ router.post('/register', function(req, res){
       });
     }
     else {
+
       res.redirect('/teacher');
     }
   });
