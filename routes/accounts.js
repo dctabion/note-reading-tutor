@@ -39,15 +39,17 @@ router.post('/register', function(req, res) {
     }
     // User is registered at this point
     passport.authenticate('local')(req, res, function(){
-      res.render('index');
+      console.log('registered & authenticated. going to redirect to /');
+      res.redirect('/');
     });
   });
 });
 
-router.post('/login', passport.authenticate('local'), function(req, res) {
-  console.log('POST /login-------------------');
-  res.redirect('/');
-});
+router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
+  function(req, res) {
+    res.redirect('/');
+  }
+);
 
 router.post('/logout', function(){
   req.logout();
