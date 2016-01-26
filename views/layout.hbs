@@ -8,18 +8,22 @@
     <h1>{{title}}</h1>
     <div id="header">
       <div id="nav-links">
-        {{#if user.isTeacher}}
-        <a href="/teacher">Student Progress</a>
-        <a href="/accounts/add-student">Add Student</a>
-        <a href="/account/modify">Account</a>
+        {{#if user}}
+          {{#if user.isTeacher}}
+            <a href="/teacher">Student Progress</a>
+            <a href="/accounts/add-student">Add Student</a>
+            <a href="/account/modify">Account</a>
+            <a href="/accounts/logout">Logout</a>
+          {{/if}}
+          {{#unless user.isTeacher}}
+            <a href="/">Play</a>
+            <a href="/account/modify">Account</a>
+            <a href="/accounts/logout">Logout</a>
+          {{/unless}}
         {{/if}}
-        {{#unless user.isTeacher}}
-        <a href="/">Play</a>
-        <a href="/account/modify">Account</a>
+        {{#unless user}}
+          <a href="/accounts/register">Register New Teacher</a>
         {{/unless}}
-        {{#if user }}
-        <a href="/accounts/logout">Logout</a>
-        {{/if}}
       </div>
       <div>
         {{#unless user }}

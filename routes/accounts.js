@@ -15,9 +15,11 @@ var siteData = {
 };
 
 router.get('/', function(req, res, next) {
-  console.log('inside account/!!')
-  siteData.user = req.user;
-  res.render('index', siteData);  // TODO fix this
+  console.log('inside /account/!!')
+  console.log('req.session');
+  console.log(req.session);
+  console.log('req.user:' + req.user);
+  res.send('account');  // TODO fix this
 });
 
 router.get('/register', function(req, res){
@@ -38,16 +40,30 @@ router.post('/register', function(req, res){
       // TODO status message...you had a problem registering
       return res.render('/', { account: account});
     }
+
+    console.log('account: ' + account);
     // User is registered at this point
-    passport.authenticate('local')(req, res, function(){
-      console.log('registered & authenticated. going to redirect to /');
-      res.redirect('/');
-    });
+
+    // authenticate if it is teacher
+    if (account.isTeacher) {
+      console.log('It is a teacher...authenticating!');
+      passport.authenticate('local')(req, res, function(){
+        console.log('req.user: ' + req.user);
+        res.redirect('/teacher');
+      });
+    }
+    else {
+      res.redirect('/teacher');
+    }
   });
 });
 
 router.get('/add-student', function(req, res){
   res.render('add-student');
+});
+
+router.get('/modify', function(req, res){
+  res.response('asdf');
 });
 
 router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
@@ -66,6 +82,8 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
     }
   }
 );
+
+
 
 router.get('/logout', function(req, res){
   console.log('trying to logout');
