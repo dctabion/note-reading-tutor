@@ -28,6 +28,8 @@ router.get('/register', function(req, res){
 });
 
 router.post('/register', function(req, res){
+  var newUserInfo = req.body;
+
   Account.register(new Account({
     username : req.body.username,
     email: req.body.email,
@@ -41,9 +43,9 @@ router.post('/register', function(req, res){
       // TODO status message...you had a problem registering
       return res.render('/', { account: account});
     }
-
-    console.log('account: ' + account);
     // User is registered at this point
+    // account will hold user that was added
+    console.log('account: ' + account);
 
     // authenticate if it is teacher
     if (account.isTeacher) {
@@ -54,7 +56,17 @@ router.post('/register', function(req, res){
       });
     }
     else {
-
+      // assemble a student data object to hold completed games result
+      // and store in the database
+      var studentData = {};
+      studentData.teacherUsername = req.user.username;
+      studentData.studentUsername = account.username;
+      studentData.games = [];
+      console.log('assembled studentData:');
+      console.log(studentData);
+      StudentData.create(studentData, function(err, data){
+        console.log('stored to mongo: ' + data);
+      });
       res.redirect('/teacher');
     }
   });
