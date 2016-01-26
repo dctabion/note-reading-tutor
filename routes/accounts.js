@@ -18,11 +18,26 @@ router.get('/register', function(req, res){
     res.render('register');
 });
 
+router.get('/logout', function(req, res){
+    res.logout();
+    res.redirect('/');
+});
+
 router.post('/register', function(req, res) {
-  Account.register(new Account({ username : req.body.username}), req.body.password, function(err, account) {
+  Account.register(new Account({
+    username : req.body.username,
+    email: req.body.email,
+    firstName: req.body.firstName,
+    lastName: req.body.lastName,
+    isTeacher: req.body.isTeacher
+  }),
+  req.body.password,
+  function(err, account) {
     if (err) {
-      return res.render('/', { account : account});
+      // TODO status message...you had a problem registering
+      return res.render('/', { account: account});
     }
+    // User is registered at this point
     passport.authenticate('local')(req, res, function(){
       res.render('index');
     });
