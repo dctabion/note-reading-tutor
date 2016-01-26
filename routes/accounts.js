@@ -59,7 +59,7 @@ router.post('/register', function(req, res){
 });
 
 router.get('/add-student', function(req, res){
-  res.render('add-student');
+  res.render('add-student', {user: req.user});
 });
 
 router.get('/modify', function(req, res){
