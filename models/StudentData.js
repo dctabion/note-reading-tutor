@@ -6,8 +6,8 @@ var GameResultSchema = new mongoose.Schema({
 });
 
 var StudentDataSchema = new mongoose.Schema({
-  teacherUsername: String,
-  studentUsername: String,
+  teacherID: String,
+  studentID: String,
   games: [GameResultSchema]
 });
 

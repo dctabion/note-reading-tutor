@@ -149,10 +149,11 @@ function checkIfCorrectAnswer(noteName) {
 function sendResults() {
   var studentData = {};
   studentData.studentUsername = document.getElementById('studentUsername').innerHTML;
-  studentData.gameResults = flashApp.game.results;
+  studentData.cards = flashApp.game.results;
   console.log('studentData: ');
   console.log(studentData);
-
+  console.log('JSON.stringify(studentData)');
+  console.log(JSON.stringify(studentData));
   var url = "http://" + window.location.host + "/results/store"
   console.log('url: ' + url);
   // $('.spinner').show(); // <div class="spinner">...

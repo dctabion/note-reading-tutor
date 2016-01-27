@@ -59,8 +59,8 @@ router.post('/register', function(req, res){
       // assemble a student data object to hold completed games result
       // and store in the database
       var studentData = {};
-      studentData.teacherUsername = req.user.username;
-      studentData.studentUsername = account.username;
+      studentData.teacherID = req.user._id;
+      studentData.studentID = account._id;
       studentData.games = [];
       console.log('assembled studentData:');
       console.log(studentData);
