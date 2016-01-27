@@ -152,6 +152,14 @@ function sendResults() {
   studentData.gameResults = flashApp.game.results;
   console.log('studentData: ');
   console.log(studentData);
+
+  var url = "http://" + window.location.host + "/results/store"
+  console.log('url: ' + url);
   // $('.spinner').show(); // <div class="spinner">...
-  // $.ajax()
+  $.ajax({
+    url: url,
+    type: 'post',
+    dataType: 'json',
+    data: JSON.stingify(studentData)
+  });
 }
