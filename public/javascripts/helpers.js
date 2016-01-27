@@ -160,6 +160,6 @@ function sendResults() {
     url: url,
     type: 'post',
     dataType: 'json',
-    data: JSON.stingify(studentData)
+    data: JSON.stringify(studentData)
   });
 }

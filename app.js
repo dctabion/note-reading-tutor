@@ -19,7 +19,7 @@ var db = require('./db/database');
 var routes = require('./routes/index');
 var accounts = require('./routes/accounts');
 var teacher = require('./routes/teacher');
-
+var results = require('./routes/results');
 
 var app = express();
 // Enable sessions immediately after starting app.
@@ -60,6 +60,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', routes);
 app.use('/accounts', accounts);
 app.use('/teacher', teacher);
+app.use('/results', results);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
