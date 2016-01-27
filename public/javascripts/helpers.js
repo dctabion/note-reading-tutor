@@ -101,7 +101,8 @@ function checkIfCorrectAnswer(noteName) {
         // stop accepting MIDI input and evaluating answers
         flashApp.game.inProgress = false;
 
-        // TODO Display results
+        // Display the results of the game
+        // TODO Make pretty
         flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!<BR>Results: ";
         for (var key in flashApp.game.results) {
           flashApp.els.statusMsg.innerHTML += key;
@@ -111,8 +112,13 @@ function checkIfCorrectAnswer(noteName) {
         }
         // flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
         console.log(flashApp.game.results);
-        // TODO Send results to server
-        sendResults();
+        // Send results to server if there logged in
+        var username = document.getElementById('studentID').innerHTML;
+        console.log('username from DOM: ', username);
+        if( username != "") {
+          console.log('someone signed in.  calling sendResults()');
+          sendResults();
+        }
       }
       // still more cards. Choose new card
       else{
@@ -139,7 +145,7 @@ function checkIfCorrectAnswer(noteName) {
 
     var currentCard = flashApp.game.flashCards[flashApp.game.currentCardIndex];
 
-    // TODO update result object
+    // increase number of wrong attempts in results
     flashApp.game.results[currentCard] = flashApp.game.results[currentCard] + 1;
   }
 
@@ -148,7 +154,7 @@ function checkIfCorrectAnswer(noteName) {
 
 function sendResults() {
   var studentData = {};
-  studentData.studentUsername = document.getElementById('studentUsername').innerHTML;
+  studentData.studentID = document.getElementById('studentID').innerHTML;
   studentData.cards = flashApp.game.results;
   console.log('studentData: ');
   console.log(studentData);
@@ -160,7 +166,15 @@ function sendResults() {
   $.ajax({
     url: url,
     type: 'post',
-    dataType: 'json',
-    data: JSON.stringify(studentData)
+    dataType: 'text',
+    data: JSON.stringify(studentData),
+    success: function(data) {
+      console.log('resultSaved and got response from server! ',data);
+    },
+    error: function(err) {
+      console.log('error: ', err);
+    }
   });
 }
+
+function resultSaved(data) { console.log('resultSaved():', data); }

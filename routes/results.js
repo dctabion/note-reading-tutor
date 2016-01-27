@@ -27,7 +27,7 @@ router.post('/store', function(req, res) {
 
   // var studentData = StudentData.find({studenUsername: gameResults.studentUser});
   StudentData.findOneAndUpdate({
-          studentUsername: incomingData.studentId
+          studentID: incomingData.studentID
         },
         {}, // no updates.  hehe cool trick!
         // append and save in callback
@@ -37,7 +37,7 @@ router.post('/store', function(req, res) {
           studentData.games.push(gameResult);
           console.log('studentData after update: ', studentData);
           studentData.save();
-          // res.json(newGameResults);
+          res.send('yo');
         });
 });
 
