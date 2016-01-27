@@ -74,6 +74,10 @@ function getRandomCardAndDisplay() {
   flashApp.els.flashCardNote.style.top = noteNameToPosition[flashApp.game.flashCards[flashApp.game.currentCardIndex]];
 }
 
+// This checks if the answer is correct or not.
+// update results for each card.
+// discards and choose new card.
+// when deck completed sends data to server to store
 function checkIfCorrectAnswer(noteName) {
   // does it match the flash card?
   if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
@@ -98,12 +102,19 @@ function checkIfCorrectAnswer(noteName) {
         flashApp.game.inProgress = false;
 
         // TODO Display results
-        flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!";
-        flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
+        flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!<BR>Results: ";
+        for (var key in flashApp.game.results) {
+          flashApp.els.statusMsg.innerHTML += key;
+          flashApp.els.statusMsg.innerHTML += ': ';
+          flashApp.els.statusMsg.innerHTML += flashApp.game.results[key];
+          flashApp.els.statusMsg.innerHTML += '  ';
+        }
+        // flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
         console.log(flashApp.game.results);
         // TODO Send results to server
-        // Choose new card
+        sendResults();
       }
+      // still more cards. Choose new card
       else{
         getRandomCardAndDisplay();
       }
@@ -117,11 +128,7 @@ function checkIfCorrectAnswer(noteName) {
     // Tell user he/she is wrong
     flashApp.els.statusMsg.innerHTML = "OOOPS! " + noteName + " is not the right note! <BR>Try again!";
 
-    // TODO do something cool like shake and switch card
-    // flashApp.els.userNote.addEventListener('transitionend', function() {
-    //   console.log('got transitionend');
-    //   flashApp.els.userNote.classList.remove('incorrectAnswer');
-    // }, true);
+    // Animate
     flashApp.els.userNote.classList.add('incorrectAnswer');
     setTimeout(function() {
       console.log('got timeout');
@@ -137,4 +144,14 @@ function checkIfCorrectAnswer(noteName) {
   }
 
   console.log('results: ', flashApp.game.results);
+}
+
+function sendResults() {
+  var studentData = {};
+  studentData.studentUsername = document.getElementById('studentUsername').innerHTML;
+  studentData.gameResults = flashApp.game.results;
+  console.log('studentData: ');
+  console.log(studentData);
+  // $('.spinner').show(); // <div class="spinner">...
+  // $.ajax()
 }

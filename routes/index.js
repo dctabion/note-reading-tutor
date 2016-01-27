@@ -3,7 +3,7 @@ var router = express.Router();
 var Account = require('../models/Account');
 
 var siteData = {
-  title: 'Flash Notes!!!'
+  title: 'Flash Notes!!!',
 };
 /* GET home page. */
 router.get('/', function(req, res, next) {
