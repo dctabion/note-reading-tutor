@@ -29,13 +29,22 @@ router.post('/store', function(req, res) {
   console.log('incomingData: ');
   console.log(incomingData);
 
-  // Repackage to match GameResult Model
+  // Repackage to into GameResult Model
   var gameResult = {};
-  gameResult.cards = incomingData.cards;
+  gameResult.cards = [];
+  var noteResult = {};
+  for (var key in incomingData.cards) {
+    console.log(key);
+    noteResult={};
+    noteResult.letter = key;
+    noteResult.wrong_count = incomingData.cards[key];
+    console.log('noteResult: ', noteResult);
+    gameResult.cards.push(noteResult);
+  }
+
   gameResult.date = Date.now();
   console.log('going to append gameResult: ', gameResult);
 
-  // var studentData = StudentData.find({studenUsername: gameResults.studentUser});
   StudentData.findOneAndUpdate({
           studentID: incomingData.studentID
         },
@@ -45,7 +54,10 @@ router.post('/store', function(req, res) {
           if (err) return (next(err));
           console.log('---pushing---');
           studentData.games.push(gameResult);
-          console.log('studentData after update: ', studentData);
+          // for (var i in studentData.games) {
+          //   console.log(studentData.games[i]);
+          // }
+          // console.log('studentData after update: ', studentData);
           studentData.save();
           res.send('yo');
         });
