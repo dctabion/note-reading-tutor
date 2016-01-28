@@ -14,6 +14,8 @@ var LocalStrategy = require('passport-local').Strategy;
 // var FacebookStratgey = require('passport-facebook').Strategy;  // try this sometime
 // needs to be available before database
 
+var colors = require('colors');
+
 // DATABASE Connection
 var db = require('./db/database');
 

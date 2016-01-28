@@ -4,6 +4,8 @@ var LocalStrategy = require('passport-local').Strategy;
 var Account = require('../models/Account');
 var StudentData = require('../models/StudentData');
 var router = express.Router();
+var colors = require('colors');
+
 
 // configure passport
 passport.use(new LocalStrategy(Account.authenticate()));
@@ -16,7 +18,7 @@ var siteData = {
 };
 
 router.get('/', function(req, res, next) {
-  console.log('inside /account/!!')
+  console.log('inside /account/!!'.green)
   console.log('req.session');
   console.log(req.session);
   console.log('req.user:' + req.user);
