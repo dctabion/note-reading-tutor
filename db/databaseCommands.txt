@@ -1,0 +1,7 @@
+mongoexport --db flashNotes --collection accounts --out db/accounts.json
+mongoexport --db flashNotes --collection studentdatas --out db/studentdatas-noData.json
+mongoexport --db flashNotes --collection studentdatas --out db/studentdatas-wData.json
+
+mongoimport --db flashNotes --collection accounts --file db/accounts.json
+mongoimport --db flashNotes --collection studentdatas --file db/studentdatas-noData.json
+mongoimport --db flashNotes --collection studentdatas --file db/studentdatas-wData.json

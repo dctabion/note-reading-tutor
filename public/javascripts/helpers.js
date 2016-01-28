@@ -113,7 +113,7 @@ function checkIfCorrectAnswer(noteName) {
         // flashApp.els.statusMsg.innerHTML += "<br>results: " + flashApp.game.results;
         console.log(flashApp.game.results);
         // Send results to server if there logged in
-        var username = document.getElementById('studentID').innerHTML;
+        var username = document.getElementById('studentUsername').innerHTML;
         console.log('username from DOM: ', username);
         if( username != "") {
           console.log('someone signed in.  calling sendResults()');
@@ -154,7 +154,7 @@ function checkIfCorrectAnswer(noteName) {
 
 function sendResults() {
   var studentData = {};
-  studentData.studentID = document.getElementById('studentID').innerHTML;
+  studentData.studentUsername = document.getElementById('studentUsername').innerHTML;
   studentData.cards = flashApp.game.results;
   console.log('studentData: ');
   console.log(studentData);

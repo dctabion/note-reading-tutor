@@ -4,11 +4,11 @@ var StudentData = require('../models/StudentData');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    StudentData.find({teacherID: req.user._id}, function(err, studentDatum){
+    StudentData.find({teacherUsername: req.user.username}, function(err, studentDatum){
       console.log('got the student Datum');
       // console.log("studentDatum", studentDatum);
       for (var i=0; i<studentDatum.length; i++) {
-        console.log("i: ", i, " teacherID: ", studentDatum[i].teacherID, " studentID: ", studentDatum[i].studentID);
+        console.log("i: ", i, " teacherUsername: ", studentDatum[i].teacherUsername, " studentUsername: ", studentDatum[i].studentUsername);
       }
       console.log("studentDatum[0]")
       res.json(studentDatum);
@@ -46,7 +46,7 @@ router.post('/store', function(req, res) {
   console.log('going to append gameResult: ', gameResult);
 
   StudentData.findOneAndUpdate({
-          studentID: incomingData.studentID
+          studentUsername: incomingData.studentUsername
         },
         {}, // no updates.  hehe cool trick!
         // append and save in callback
