@@ -55,7 +55,7 @@ router.post('/register', function(req, res){
       console.log('It is a teacher...authenticating!');
       passport.authenticate('local')(req, res, function(){
         console.log('req.user: ' + req.user);
-        res.redirect('/teacher');
+        res.redirect('/results');
       });
     }
     else {
@@ -70,7 +70,7 @@ router.post('/register', function(req, res){
       StudentData.create(studentData, function(err, data){
         console.log('stored to mongo: ' + data);
       });
-      res.redirect('/teacher');
+      res.redirect('/results');
     }
   });
 });
@@ -90,7 +90,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
     if (req.user.isTeacher == true)
     {
       console.log('A teacher is logging in!');
-      res.redirect('/teacher');
+      res.redirect('/results');
     }
     else
     {
