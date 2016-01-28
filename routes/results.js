@@ -4,7 +4,17 @@ var StudentData = require('../models/StudentData');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-    res.render('results', {user: req.user});
+    StudentData.find({teacherID: req.user._id}, function(err, studentDatum){
+      console.log('got the student Datum');
+      // console.log("studentDatum", studentDatum);
+      for (var i=0; i<studentDatum.length; i++) {
+        console.log("i: ", i, " teacherID: ", studentDatum[i].teacherID, " studentID: ", studentDatum[i].studentID);
+      }
+      console.log("studentDatum[0]")
+      res.json(studentDatum);
+      // res.render('results', {user: req.user});
+    });
+
 });
 
 router.post('/store', function(req, res) {
