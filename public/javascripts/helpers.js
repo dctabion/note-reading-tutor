@@ -160,7 +160,9 @@ function sendResults() {
   console.log(studentData);
   console.log('JSON.stringify(studentData)');
   console.log(JSON.stringify(studentData));
-  var url = "http://" + window.location.host + "/results/store"
+
+  // setup url for http or https to match server side
+  var url = window.location.protocol + "//" + window.location.host + "/results/store"
   console.log('url: ' + url);
   // $('.spinner').show(); // <div class="spinner">...
   $.ajax({
