@@ -1,8 +1,14 @@
-// require('dotenv').load();
+require('dotenv').load();
 
 var mongoose
 var mongoose = require('mongoose');
-var connectionString = "mongodb://localhost/flashNotes"
+
+if (process.env.NODE_ENV=== 'production') {
+  connectionString = 'proecess.env.MONGOLAB_URI';
+}
+else {
+  connectionString = process.env.DATABASE_URL;
+}
 // var connectionString = process.env.DATABASE_URL;
 
 // define connection string.  'production' will be set if deployed on heroku
