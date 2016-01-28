@@ -4,7 +4,7 @@ var mongoose
 var mongoose = require('mongoose');
 
 if (process.env.NODE_ENV=== 'production') {
-  connectionString = 'process.env.MONGOLAB_URI';
+  connectionString = process.env.MONGOLAB_URI;
   console.log('Using production connectionString');
 }
 else {
