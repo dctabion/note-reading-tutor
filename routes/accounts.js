@@ -28,6 +28,7 @@ router.get('/register', function(req, res){
 });
 
 router.post('/register', function(req, res){
+  console.log('in POST /register-------------------------');
   var newUserInfo = req.body;
 
   Account.register(new Account({
