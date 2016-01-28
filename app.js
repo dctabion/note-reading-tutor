@@ -6,6 +6,30 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
+var hbs = require('hbs');
+
+hbs.registerHelper('colorCodeCount', function(count){
+  // beginning of string
+  var str = '<td style="text-align: center; background: ';
+  // add color coding for wrong_count
+  if (count == 0) {
+    str += 'green"';
+  }
+  else if (count == 1) {
+    str += 'yellow"';
+  }
+  else if (count == 2) {
+    str += 'orange"';
+  }
+  else {
+    str += 'red"';
+  }
+  // rest of string
+  str += '>' + this.wrong_count + '</td>';
+
+  console.log(str);
+  return new hbs.SafeString(str);
+});
 
 // Add passport .. before database
 var passport = require('passport');

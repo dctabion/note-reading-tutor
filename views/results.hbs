@@ -2,7 +2,7 @@
 <h1 style="text-align: center">{{this.studentUsername}}</h1>
 
   {{#each this.games }}
-  <table border="1" width="100%">
+  <table width="100%">
   <caption>{{ this.date }}</caption>
 
     <tr>
@@ -12,7 +12,7 @@
     </tr>
     <tr>
       {{#each this.cards}}
-      <td style="text-align: center">{{ this.wrong_count }}</td>
+        {{colorCodeCount this.wrong_count}}
       {{/each}}
     </tr>
 
