@@ -2,8 +2,20 @@ var express = require('express');
 var router = express.Router();
 var StudentData = require('../models/StudentData');
 
-/* GET home page. */
+// Display all students and their results for the teacher that is logged in
 router.get('/', function(req, res, next) {
+  StudentData.find({teacherUsername: req.user.username}, function(err, studentDatum){
+    console.log('got the student Datum');
+    console.log("studentDatum", studentDatum);
+    // for (var i=0; i<studentDatum.length; i++) {
+    //   console.log("i: ", i, " teacherUsername: ", studentDatum[i].teacherUsername, " studentUsername: ", studentDatum[i].studentUsername);
+    // }
+    res.render('results', { students: studentDatum, user: req.user } );
+  });
+});
+
+// API style: Get results in JSON format
+router.get('/json', function(req, res, next) {
     StudentData.find({teacherUsername: req.user.username}, function(err, studentDatum){
       console.log('got the student Datum');
       // console.log("studentDatum", studentDatum);
@@ -17,6 +29,7 @@ router.get('/', function(req, res, next) {
 
 });
 
+// Store results from a completed game
 router.post('/store', function(req, res) {
   console.log('Got a new game to store!  req.body:');
   // For some reason, the JSON sent from client is the key in an object with one key-value pair.
@@ -45,6 +58,8 @@ router.post('/store', function(req, res) {
   gameResult.date = Date.now();
   console.log('going to append gameResult: ', gameResult);
 
+  // Find the StudentData Object and push the assmbled data
+  // from above onto the Student Data Games array
   StudentData.findOneAndUpdate({
           studentUsername: incomingData.studentUsername
         },
@@ -54,10 +69,6 @@ router.post('/store', function(req, res) {
           if (err) return (next(err));
           console.log('---pushing---');
           studentData.games.push(gameResult);
-          // for (var i in studentData.games) {
-          //   console.log(studentData.games[i]);
-          // }
-          // console.log('studentData after update: ', studentData);
           studentData.save();
           res.send('yo');
         });

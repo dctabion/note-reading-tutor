@@ -10,9 +10,10 @@
       <div id="nav-links">
         {{#if user}}
           {{#if user.isTeacher}}
-            <a href="/results">Student Progress</a>
+            <a href="/results/">Student Progress</a>
+            <a href="/results/json">Student Progress JSON</a>
             <a href="/accounts/add-student">Add Student</a>
-            <a href="/account/modify">Account</a>
+            <!-- <a href="/account/updatey">Account</a> -->
             <a href="/accounts/logout">Logout</a>
           {{/if}}
           {{#unless user.isTeacher}}

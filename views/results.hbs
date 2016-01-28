@@ -1,0 +1,22 @@
+{{#each students}}
+<h1 style="text-align: center">{{this.studentUsername}}</h1>
+
+  {{#each this.games }}
+  <table border="1" width="100%">
+  <caption>{{ this.date }}</caption>
+
+    <tr>
+      {{#each this.cards}}
+      <th>{{ this.letter }}</th>
+      {{/each}}
+    </tr>
+    <tr>
+      {{#each this.cards}}
+      <td style="text-align: center">{{ this.wrong_count }}</td>
+      {{/each}}
+    </tr>
+
+  </table>
+  {{/each}}
+
+{{/each}}
