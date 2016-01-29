@@ -14,7 +14,7 @@ passport.deserializeUser(Account.deserializeUser());
 // end configuration for passport
 
 var siteData = {
-  title: 'Flash Notes!!!'
+  title: 'Flash Notes!'
 };
 
 router.get('/', function(req, res, next) {
@@ -26,7 +26,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res){
-    res.render('register');
+    res.render('register', siteData);
 });
 
 router.post('/register', function(req, res){
@@ -44,7 +44,7 @@ router.post('/register', function(req, res){
   function(err, account) {
     if (err) {
       // TODO status message...you had a problem registering
-      return res.render('/', { account: account});
+      return res.render('register', { siteDate });
     }
     // User is registered at this point
     // account will hold user that was added
@@ -76,7 +76,8 @@ router.post('/register', function(req, res){
 });
 
 router.get('/add-student', function(req, res){
-  res.render('add-student', {user: req.user});
+  siteData.user = req.user;
+  res.render('add-student', siteData);
 });
 
 router.get('/modify', function(req, res){

@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 var StudentData = require('../models/StudentData');
 
+var siteData = {
+  title: 'Flash Notes!',
+};
+
 // Display all students and their results for the teacher that is logged in
 router.get('/', function(req, res, next) {
   StudentData.find({teacherUsername: req.user.username}, function(err, studentDatum){
@@ -10,7 +14,9 @@ router.get('/', function(req, res, next) {
     // for (var i=0; i<studentDatum.length; i++) {
     //   console.log("i: ", i, " teacherUsername: ", studentDatum[i].teacherUsername, " studentUsername: ", studentDatum[i].studentUsername);
     // }
-    res.render('results', { students: studentDatum, user: req.user } );
+    siteData.students = studentDatum;
+    siteData.user = req.user;
+    res.render('results', siteData );
   });
 });
 
