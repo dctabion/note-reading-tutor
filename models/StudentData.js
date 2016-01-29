@@ -13,6 +13,8 @@ var GameResultSchema = new mongoose.Schema({
 var StudentDataSchema = new mongoose.Schema({
   teacherUsername: String,
   studentUsername: String,
+  firstName: String,
+  lastName: String,
   games: [GameResultSchema]
 });
 

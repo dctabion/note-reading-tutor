@@ -7,7 +7,7 @@
     <link href='https://fonts.googleapis.com/css?family=Chewy' rel='stylesheet' type='text/css'>
   </head>
   <body>
-  <div class="container">
+  <div id="playground" class="container">
     <div class="row amber accent-1 titleBar valign-wrapper">
       <div class="col s8">
         <h1 class="right-align">{{title}}</h1>
@@ -19,7 +19,7 @@
     <nav>
       <div class="nav-wrapper amber" id='navbarMain'>
         {{#if user}}
-          Welcome, {{user.username}}!
+          Welcome, {{user.firstName}}!
         {{/if}}
         {{#unless user}}
           {{noUserMsg}}

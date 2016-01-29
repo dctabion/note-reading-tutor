@@ -1,8 +1,8 @@
 {{#each students}}
-<h1 style="text-align: center">{{this.studentUsername}}</h1>
+<h2 style="text-align: center">{{this.firstName}}&nbsp{{this.lastName}}</h2>
 
   {{#each this.games }}
-  <table width="100%">
+  <table class="resultsTable" width="100%">
   <caption>{{ this.date }}</caption>
 
     <tr>

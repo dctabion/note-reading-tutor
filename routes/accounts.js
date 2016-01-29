@@ -44,7 +44,7 @@ router.post('/register', function(req, res){
   function(err, account) {
     if (err) {
       // TODO status message...you had a problem registering
-      return res.render('register', { siteDate });
+      return res.redirect('register');
     }
     // User is registered at this point
     // account will hold user that was added
@@ -59,11 +59,14 @@ router.post('/register', function(req, res){
       });
     }
     else {
+      // it is a student
       // assemble a student data object to hold completed games result
       // and store in the database
       var studentData = {};
       studentData.teacherUsername = req.user.username;
       studentData.studentUsername = account.username;
+      studentData.firstName = account.firstName;
+      studentData.lastName = account.lastName;
       studentData.games = [];
       console.log('assembled studentData:');
       console.log(studentData);
