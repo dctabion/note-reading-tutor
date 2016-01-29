@@ -17,72 +17,37 @@
       </div>
     </div>
     <nav>
-      <div class="nav-wrapper amber">
+      <div class="nav-wrapper amber" id='navbarMain'>
         {{#if user}}
           Welcome, {{user.username}}!
         {{/if}}
         {{#unless user}}
-          Enjoy playing flashnotes!
+          {{noUserMsg}}
         {{/unless}}
 
         <ul id="nav-mobile" class="right">
           {{#if user}}
             {{#if user.isTeacher}}
               <li><a href="/results/">Student Progress</a></li>
-              <li><a href="/results/json">Student Progress JSON</a></li>
+              <!-- <li><a href="/results/json">Student Progress JSON</a></li> -->
               <li><a href="/accounts/add-student">Add Student</a></li>
               <li><a href="/accounts/logout">Logout</a></li>
             {{/if}}
             {{#unless user.isTeacher}}
               <li><a href="/">Play</a></li>
-              <li><a href="/account/modify">Account</a></li>
+              <!-- <li><a href="/account/modify">Account</a></li> -->
               <li><a href="/accounts/logout">Logout</a></li>
             {{/unless}}
           {{/if}}
           {{#unless user}}
             <li><a href="/game">Play Game</a></li>
+            <li> &nbsp &nbsp|&nbsp &nbsp</li>
+            <li><a href="/">Login</a></li>
             <li><a href="/accounts/register">Register New Teacher</a></li>
           {{/unless}}
         </ul>
       </div>
     </nav>
-    <div class="row">
-      {{#unless user }}
-      <form action="/accounts/login" method="post">
-        <div class="row">
-          <div class="input-field col s4 offset-s4">
-            <input id="username" type="text" name="username">
-            <label for="username">Username</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s4 offset-s4">
-            <input id="password" type="password" name="password">
-            <label for="password">Password</label>
-          </div>
-        </div>
-        <div class="row">
-          <div class="input-field col s4 offset-s4">
-            <input type="submit" value="Login">
-          </div>
-        </div>
-      </form>
-      {{/unless}}
-    </div>
-
-
-    <div id="header">
-      <div id="status-msg-header">
-
-      </div>
-      <div id="nav-links">
-
-      </div>
-      <div>
-
-      </div>
-
-    </div>
     <div>
       {{{body}}}
     </div>

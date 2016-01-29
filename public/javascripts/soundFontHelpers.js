@@ -15,15 +15,15 @@ function setupSoundfont() {
   });
 
   // TODO delete this test code
-  flashApp.theButton.onclick = function(){
-    console.log('click!');
-    flashApp.soundfont.instrument.play('C3',flashApp.soundfont.ctx.currentTime, 5);
-    flashApp.soundfont.instrument.play('G3',flashApp.soundfont.ctx.currentTime+0.1, 5);
-    flashApp.soundfont.instrument.play('D4',flashApp.soundfont.ctx.currentTime+0.2, 5);
-    flashApp.soundfont.instrument.play('Eb4',flashApp.soundfont.ctx.currentTime+0.3, 5);
-    flashApp.soundfont.instrument.play('Bb4',flashApp.soundfont.ctx.currentTime+0.4, 5);
-    flashApp.soundfont.instrument.play('F5',flashApp.soundfont.ctx.currentTime+0.5, 5);
-    flashApp.soundfont.instrument.play('D6',flashApp.soundfont.ctx.currentTime+0.6, 5);
-  };
+  // flashApp.theButton.onclick = function(){
+  //   console.log('click!');
+  //   flashApp.soundfont.instrument.play('C3',flashApp.soundfont.ctx.currentTime, 5);
+  //   flashApp.soundfont.instrument.play('G3',flashApp.soundfont.ctx.currentTime+0.1, 5);
+  //   flashApp.soundfont.instrument.play('D4',flashApp.soundfont.ctx.currentTime+0.2, 5);
+  //   flashApp.soundfont.instrument.play('Eb4',flashApp.soundfont.ctx.currentTime+0.3, 5);
+  //   flashApp.soundfont.instrument.play('Bb4',flashApp.soundfont.ctx.currentTime+0.4, 5);
+  //   flashApp.soundfont.instrument.play('F5',flashApp.soundfont.ctx.currentTime+0.5, 5);
+  //   flashApp.soundfont.instrument.play('D6',flashApp.soundfont.ctx.currentTime+0.6, 5);
+  // };
 
 }

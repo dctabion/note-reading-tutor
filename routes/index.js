@@ -7,13 +7,16 @@ var siteData = {
 };
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  console.log('req.user');
-  console.log(req.user);
   siteData.user = req.user;
-  console.log('siteData');
-  console.log(siteData);
+  siteData.noUserMsg = 'Enjoy playing Flash Notes!';
 
   res.render('index', siteData);
+});
+
+router.get('/game', function(req, res, next) {
+  siteData.user = req.user;
+  siteData.noUserMsg = 'Login to report your results!';
+  res.render('game', siteData);
 });
 
 module.exports = router;

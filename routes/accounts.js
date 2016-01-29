@@ -96,7 +96,7 @@ router.post('/login', passport.authenticate('local', { failureRedirect: '/' }),
     else
     {
       console.log('A student is logging in!');
-      res.redirect('/');
+      res.redirect('/game');
     }
   }
 );

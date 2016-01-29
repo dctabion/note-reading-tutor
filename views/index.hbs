@@ -1,0 +1,23 @@
+<div class="row">
+  {{#unless user }}
+  <form action="/accounts/login" method="post">
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <input id="username" type="text" name="username">
+        <label for="username">Username</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <input id="password" type="password" name="password">
+        <label for="password">Password</label>
+      </div>
+    </div>
+    <div class="row">
+      <div class="input-field col s4 offset-s4">
+        <input type="submit" value="Login">
+      </div>
+    </div>
+  </form>
+  {{/unless}}
+</div>
