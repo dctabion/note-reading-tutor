@@ -26,13 +26,17 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/register', function(req, res){
+    console.log(siteData);
+    // TODO this is a temp fix.
+    siteData = {};
+    siteData.title = "Flash Notes!"
     res.render('register', siteData);
 });
 
 router.post('/register', function(req, res){
   console.log('in POST /register-------------------------');
   var newUserInfo = req.body;
-
+  console.log("newUserInfo.isTeacher: ", newUserInfo.isTeacher);
   Account.register(new Account({
     username : req.body.username,
     email: req.body.email,
@@ -43,12 +47,20 @@ router.post('/register', function(req, res){
   req.body.password,
   function(err, account) {
     if (err) {
+      console.log("newUserInfo.isTeacher: ", newUserInfo.isTeacher);
       // TODO status message...you had a problem registering
-      return res.redirect('register');
+      if (newUserInfo.isTeacher==true) {
+        console.log('teacherReg failed!', err);
+        return res.redirect('register');
+      }
+      else if (newUserInfo.isTeacher==false) {
+        console.log('studentReg failed!', err);
+        return res.redirect('add-student');
+      }
     }
     // User is registered at this point
     // account will hold user that was added
-    console.log('account: ' + account);
+    console.log('account:',  account);
 
     // authenticate if it is teacher
     if (account.isTeacher) {
