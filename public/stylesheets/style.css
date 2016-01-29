@@ -1,9 +1,15 @@
 body {
   padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+  font-family: 'Chewy', cursive; }
 
 a {
   color: #00B7FF; }
+
+.titleBar {
+  padding-left: 5px; }
+
+#notesLogo {
+  width: 40px; }
 
 #flashcard {
   width: 280px;
@@ -85,9 +91,6 @@ a {
   display: block;
   float: left;
   padding-right: 7px; }
-
-#login {
-  float: right; }
 
 #register {
   display: block; }
