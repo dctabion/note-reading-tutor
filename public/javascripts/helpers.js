@@ -103,10 +103,10 @@ function checkIfCorrectAnswer(noteName) {
 
         // Display the results of the game
         // TODO Make pretty
-        flashApp.els.statusMsg.innerHTML += "GREAT JOB!!! Deck completed!<BR>Results: ";
+        flashApp.els.statusMsg.innerHTML += "<br>GREAT JOB!!! Deck completed!<BR>Results: ";
         for (var key in flashApp.game.results) {
           flashApp.els.statusMsg.innerHTML += key;
-          flashApp.els.statusMsg.innerHTML += ': ';
+          flashApp.els.statusMsg.innerHTML += ':';
           flashApp.els.statusMsg.innerHTML += flashApp.game.results[key];
           flashApp.els.statusMsg.innerHTML += '  ';
         }

@@ -34,7 +34,7 @@
               <li><a href="/accounts/logout">Logout</a></li>
             {{/if}}
             {{#unless user.isTeacher}}
-              <li><a href="/">Play</a></li>
+              <li><a href="/game">Play Game</a></li>
               <!-- <li><a href="/account/modify">Account</a></li> -->
               <li><a href="/accounts/logout">Logout</a></li>
             {{/unless}}
@@ -51,6 +51,7 @@
     <div>
       {{{body}}}
     </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" type="text/javascript"></script>
     <script src="/javascripts/materialize.js" type="text/javascript"></script>
   </div>
   </body>
