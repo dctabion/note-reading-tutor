@@ -169,7 +169,7 @@ function sendResults() {
     url: url,
     type: 'post',
     dataType: 'text',
-    data: JSON.stringify(studentData),
+    data: studentData,
     success: function(data) {
       console.log('resultSaved and got response from server! ',data);
     },

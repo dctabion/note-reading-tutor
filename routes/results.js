@@ -38,15 +38,8 @@ router.get('/json', function(req, res, next) {
 // Store results from a completed game
 router.post('/store', function(req, res) {
   console.log('Got a new game to store!  req.body:');
-  // For some reason, the JSON sent from client is the key in an object with one key-value pair.
-  // The value is an empty stringify
-  // So we need to extract the key and parse that!
-  // Parse data into object
-  var keys = Object.keys(req.body);
-  console.log('Object.keys(req.body):' + keys);
-  var incomingData = JSON.parse(keys[0]);
-  console.log('incomingData: ');
-  console.log(incomingData);
+  console.log(req.body);
+  var incomingData = req.body;
 
   // Repackage to into GameResult Model
   var gameResult = {};
