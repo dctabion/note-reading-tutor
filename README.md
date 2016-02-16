@@ -15,3 +15,15 @@ When a music student is learning to read music, they are often sent home to prac
 
 ### Wire Frames
 [Click here to see initial wire frames](https://github.com/dctabion/note-reading-tutor/tree/master/documentation/wireframes)
+
+### Technologies Used
+Web MIDI API
+Soundfont / Web Audio
+HTML5 SVG support
+CSS transitions/animations
+Passport & Passport Sessions
+Express.js + Node.js, Mongoose/MongoDB
+Client Side Javascript App for Game
+AJAX
+
+### Architecture
