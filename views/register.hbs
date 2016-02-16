@@ -1,11 +1,33 @@
 <h3>Teacher Registration</h3>
 <form id="register" action="/accounts/register" method="post">
-    <input type="text" name="firstName" value=""  placeholder="First Name">
-    <input type="text" name="lastName" value=""  placeholder="Last Name">
-    <input type="text" name="email" value="" placeholder="email">
-    <input type="text" name="username" value=""  placeholder="Username">
-    <input type="password" name="password" value="" placeholder="Password">
-    <input type="password" name="passwordConfirmation" value="" placeholder="Password Confirmation">
-    <input type="hidden" name=isTeacher value="true">
+  <div class="input-field col s12">
+    <input id="firstName" type="text" name="firstName">
+    <label for="firstName">First Name</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="lastName" type="text" name="lastName">
+    <label for="lastNane">Last Name</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="email" type="text" name="email">
+    <label for="email">Email</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="username" type="text" name="username">
+    <label for="username">Username</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="password" type="password" name="password">
+    <label for="password">Password</label>
+  </div>
+  <div class="input-field col s12">
+    <input id="passwordConfirmation" type="password" name="passwordConfirmation">
+    <label for="passwordConfirmation">Confirm Password</label>
+  </div>
+  <div class="input-field col s12">
     <input type="submit" value="Create Account">
+    <!-- <label for="passwordConfirmation">Confirm Password</label> -->
+  </div>
+  <input type="hidden" name=isTeacher value="true">
+
 </form>
