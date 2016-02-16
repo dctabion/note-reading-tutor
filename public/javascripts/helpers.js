@@ -27,7 +27,7 @@ function areResourcesLoaded(resourceKey) {
 function startGame() {
   console.log('startGame()');
   // Hide Loading Gif
-  flashApp.els.loadingGif.style.display = "none";
+  flashApp.els.loadingGifContainer.style.display = "none";
 
   if (flashApp.misc.inputsRegistered) {
     flashApp.els.statusMsg.innerHTML = 'Let\'s rock!';

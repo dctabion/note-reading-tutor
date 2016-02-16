@@ -25,7 +25,7 @@ function onMIDISuccess(midi) {
         input.value.onmidimessage = onMIDIMessage;
     }
     console.log('done registering MIDI input(s)');
-    console.log('num inputsRegistered: ', inputsRegistered);
+    console.log('num inputsRegistered: ', flashApp.misc.inputsRegistered);
     areResourcesLoaded('midi');
 }
 
