@@ -14,13 +14,18 @@ function onMIDISuccess(midi) {
     // when we get a succesful response, run this code
     // midi is our raw MIDI data, inputs, outputs, and sysex status
     var inputs = midi.inputs.values();
+    flashApp.misc.inputsRegistered = 0;
     // loop over all available inputs and listen for any MIDI input
     for (var input = inputs.next(); input && !input.done; input = inputs.next()) {
         console.log('registering another input');
+        // count how many midi inputs are registered
+
+        flashApp.misc.inputsRegistered++;
         // each time there is a midi message call the onMIDIMessage function
         input.value.onmidimessage = onMIDIMessage;
     }
     console.log('done registering MIDI input(s)');
+    console.log('num inputsRegistered: ', inputsRegistered);
     areResourcesLoaded('midi');
 }
 

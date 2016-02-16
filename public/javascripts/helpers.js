@@ -29,11 +29,16 @@ function startGame() {
   // Hide Loading Gif
   flashApp.els.loadingGif.style.display = "none";
 
-  flashApp.els.statusMsg.innerHTML = 'Let\'s rock!';
-
-  // Wait for user to click to start game
-  flashApp.els.statusMsg.innerHTML += "<br>Click here to start playing!";
-  flashApp.els.statusMsg.addEventListener('click', startGameClick );
+  if (flashApp.misc.inputsRegistered) {
+    flashApp.els.statusMsg.innerHTML = 'Let\'s rock!';
+    // Wait for user to click to start game
+    flashApp.els.statusMsg.innerHTML += "<br>Click here to start playing!";
+    flashApp.els.statusMsg.addEventListener('click', startGameClick );
+  }
+  else {
+    flashApp.els.statusMsg.innerHTML = 'No MIDI keyboard detected!';
+    flashApp.els.statusMsg.innerHTML += "<br>Attatch MIDI device and reload page!";
+  }
 };
 
 
