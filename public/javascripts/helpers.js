@@ -37,7 +37,7 @@ function startGame() {
   }
   else {
     flashApp.els.statusMsg.innerHTML = 'No MIDI keyboard detected!';
-    flashApp.els.statusMsg.innerHTML += "<br>Attatch MIDI device and reload page!";
+    flashApp.els.statusMsg.innerHTML += "<br>Attach MIDI device and reload page!";
   }
 };
 
