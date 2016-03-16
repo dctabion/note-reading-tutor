@@ -47,6 +47,9 @@
             <li> &nbsp &nbsp|&nbsp &nbsp</li>
             <li><a href="/">Login</a></li>
             <li><a href="/accounts/register">Register New Teacher</a></li>
+            <li><a class="modal-instructions-trigger" href="#modal-instructions">Instructions & Demo</a></li>
+            <!-- <li><a class="waves-effect waves-light btn modal-trigger" href="#modal-instructions">Modal</a></li> -->
+
           {{/unless}}
         </ul>
       </div>
@@ -58,7 +61,47 @@
     </div>
 
   </div>
+
+
+  <!-- Modal Structure -->
+  <div id="modal-instructions" class="modal">
+    <div class="modal-content">
+      <h5>INSTRUCTIONS</h5>
+      <p>Flash Notes is a teacher monitored flash card game for students learning to read musical notes.</p>
+      <ol>
+        <li>Teacher creates a teacher account</li>
+        <li>Teacher then creates student accounts</li>
+        <li>Students can log in and play the game</li>
+        <li>Upon completing a set of flashcards, results are reported to the server</li>
+        <li>When a teacher is logged in, they can see the results for all their students</li>
+      </ol>
+
+      <h5>DEMO ACCOUNTS</h5>
+      <p>1) Try Maya's Student Login and play if you have a MIDI instrument<br>&nbsp&nbsp username: mj<br>&nbsp&nbsp password: mj</p>
+      <p>2)Try Jim's Teacher Login to see Maya's results<br>&nbsp&nbsp username: jhaff<br>&nbsp&nbsp password: jhaff</p>
+
+      <h5>VIDEO DEMO</h5>
+      <p>
+        <p>Coming soon.  In the meantime, enjoy this flyfishing video</p>
+        <div class="video-container">
+          <iframe width="560" height="315" src="https://www.youtube.com/embed/wZAadcAAv5I" frameborder="0" allowfullscreen></iframe>
+          <!-- <iframe width="1102" height="620" src="https://www.youtube.com/embed?v=wZAadcAAv5I?rel=0&showinfo=0" frameborder="0" allowfullscreen></iframe> -->
+        </div>
+      </p>
+    </div>
+  </div>
+
+  <!-- Modal Structure -->
+  <div id="modal-no-midi-instrument" class="modal">
+    <div class="modal-content">
+      <h4>NO MIDI INSTRUMENT DETECTED!</h4>
+      <p><br>Currently you can only play with a MIDI instrument.<br>Ability to play using computer keyboard coming soon!</p>
+    </div>
+  </div>
+
+
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.js" type="text/javascript"></script>
   <script src="/javascripts/materialize.js" type="text/javascript"></script>
+  <script src="/javascripts/app_ui.js" type="text/javascript"></script>
   </body>
 </html>
