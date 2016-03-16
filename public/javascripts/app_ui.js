@@ -10,43 +10,42 @@ $(document).ready(function(){
     console.log('url: ', url);
 
     $('.modal-instructions-trigger').leanModal({
-          dismissible: true, // Modal can be dismissed by clicking outside of the modal
-          opacity: .5, // Opacity of modal background
-          in_duration: 300, // Transition in duration
-          out_duration: 200, // Transition out duration
-          ready: function() {
-            console.log('Ready');
-            $(".video-container, iframe").attr('src', url);
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+        ready: function() {
+          console.log('Ready');
+          $(".video-container, iframe").attr('src', url);
 
-          }, // Callback for Modal open
-          complete: function() {
-            console.log('Closed');
-            $(".video-container, iframe").attr('src', '');
-          } // Callback for Modal close
-        }
-      );
-
-  //   {
-  //   complete: function() {
-  //     console.log('closing modal');
-  //     player.stopVideo();
-  //   }   // Callback for Modal close
-  // });
-// );
-
-
-  $('.modal-trigger').leanModal({
-
-    }
-  );
-
+        }, // Callback for Modal open
+        complete: function() {
+          console.log('Closed');
+          $(".video-container, iframe").attr('src', '');
+        } // Callback for Modal close
+      }
+    );
 
   var page = $('#page').html();
 
   if ( page == "index" ) {
     if(sessionStorage.getItem('popState') != 'shown'){
       console.log('got index!!');
-      $('#modal-instructions').openModal();
+      $('#modal-instructions').openModal({
+        dismissible: true, // Modal can be dismissed by clicking outside of the modal
+        opacity: .5, // Opacity of modal background
+        in_duration: 300, // Transition in duration
+        out_duration: 200, // Transition out duration
+        ready: function() {
+          console.log('Ready');
+          $(".video-container, iframe").attr('src', url);
+
+        }, // Callback for Modal open
+        complete: function() {
+          console.log('Closed');
+          $(".video-container, iframe").attr('src', '');
+        } // Callback for Modal close
+      });
       sessionStorage.setItem('popState','shown')
     }
   }
