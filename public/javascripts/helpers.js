@@ -158,7 +158,7 @@ function checkIfCorrectAnswer(noteName) {
     console.log('wrong!');
 
     // Tell user he/she is wrong
-    flashApp.els.statusMsg.innerHTML = "OOOPS! " + noteName + " is not the right note! <BR>Try again!";
+    flashApp.els.statusMsg.innerHTML = noteName + " INCORRECT! <BR>Try again!";
 
     // Animate
     flashApp.els.userNote.classList.add('incorrectAnswer');
