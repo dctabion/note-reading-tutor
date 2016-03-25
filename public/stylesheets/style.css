@@ -116,4 +116,22 @@ a {
 .resultsTable {
   margin-top: 10px; }
 
+#modal-no-midi-instrument-content h4 {
+  text-align: center; }
+
+#modal-no-midi-instrument-content p {
+  text-align: center;
+  width: 70%;
+  margin: 0 auto; }
+
+#modal-img {
+  width: 50%;
+  margin: 12px auto 5px auto;
+  border: 2px solid darkgrey;
+  border-radius: 2%; }
+
+#modal-img img {
+  width: 100%;
+  margin: auto; }
+
 /*# sourceMappingURL=style.css.map */
