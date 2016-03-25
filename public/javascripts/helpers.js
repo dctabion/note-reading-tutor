@@ -30,23 +30,42 @@ function startGame() {
   flashApp.els.loadingGifContainer.style.display = "none";
 
   if (flashApp.misc.inputsRegistered) {
-    flashApp.els.statusMsg.innerHTML = 'Let\'s rock!';
-    // Wait for user to click to start game
-    flashApp.els.statusMsg.innerHTML += "<br>Click here to start playing!";
-    flashApp.els.statusMsg.addEventListener('click', startGameClick );
+    // Set inputMode
+    flashApp.misc.inputMode = "MIDI";
   }
   else {
-    flashApp.els.statusMsg.innerHTML = 'No MIDI keyboard detected!';
-    flashApp.els.statusMsg.innerHTML += "<br>Attach MIDI device and reload page!";
-
+    flashApp.misc.inputMode = "keyboard";
+    // Inform user to use computer keyboard for input
     $('#modal-no-midi-instrument').openModal();
   }
+
+  // Wait for user to click to start game
+  flashApp.els.statusMsg.innerHTML = "<br>Click here to start playing!";
+  flashApp.els.statusMsg.addEventListener('click', startGameClick );
 };
 
 
 function startGameClick() {
   // User Clicked
   console.log('click');
+
+  // register keyup listener if no MIDI
+  if (flashApp.misc.inputMode == "keyboard") {
+    $(document).on('keyup', function(event){
+      console.log('got a keyup! event.keyCode=', event.keyCode);
+      // lookup noteName
+      // TODO fix this mapping of noteName
+      var noteName = keyCodeToNoteName(event.keyCode);
+
+      flashApp.soundfont.instrument.play(noteName,flashApp.soundfont.ctx.currentTime, 1);
+      console.log('noteName: ' + noteName);
+      flashApp.els.userNote.style.top = noteNameToPosition[noteName];
+      flashApp.els.userNote.style.display = 'block';
+
+      checkIfCorrectAnswer(noteName);
+    });
+  }
+
   flashApp.els.flashCard.style.display = "block";
   // create a new deck of cards
   flashApp.game.flashCards = allCards;
@@ -165,8 +184,10 @@ function sendResults() {
   studentData.cards = flashApp.game.results;
   console.log('studentData: ');
   console.log(studentData);
-  console.log('JSON.stringify(studentData)');
-  console.log(JSON.stringify(studentData));
+
+  jsonStringStudentData = JSON.stringify(studentData);
+  console.log('jsonString');
+  console.log(jsonStringStudentData);
 
   // setup url for http or https to match server side
   var url = window.location.protocol + "//" + window.location.host + "/results/store"
@@ -176,6 +197,7 @@ function sendResults() {
     url: url,
     type: 'post',
     dataType: 'text',
+    // data: jsonStringStudentData,
     data: studentData,
     success: function(data) {
       console.log('resultSaved and got response from server! ',data);
@@ -187,3 +209,30 @@ function sendResults() {
 }
 
 function resultSaved(data) { console.log('resultSaved():', data); }
+
+
+function keyCodeToNoteName(keyCode) {
+  // figure out which range it is in upper or lower
+  var currentCard = flashApp.game.flashCards[flashApp.game.currentCardIndex];
+  console.log('currentCard: ', currentCard);
+  if (  (currentCard == 'C4') ||
+        (currentCard == 'D4') ||
+        (currentCard == 'E4') ||
+        (currentCard == 'F4') ||
+        (currentCard == 'G4') ||
+        (currentCard == 'A4') ||
+        (currentCard == 'B4')   ) {
+    console.log('card in lower range');
+    mapping = keyCodeToNoteName4LowRangeCard;
+  }
+  else {
+    console.log('card in upper range');
+    mapping = keyCodeToNoteName4HiRangeCard
+  }
+
+  // resolve mapping of keycode to note name
+  var selectedNoteName = mapping[keyCode];
+  console.log('resolved mapping - selectedNoteName:', selectedNoteName);
+
+  return selectedNoteName;
+}

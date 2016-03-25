@@ -40,6 +40,9 @@ router.post('/store', function(req, res) {
   console.log('Got a new game to store!  req.body:');
   console.log(req.body);
   var incomingData = req.body;
+  console.log('studentUsername:', incomingData.studentUsername);
+  console.log('incomingData.cards:');
+  console.log(incomingData.cards);
 
   // Repackage to into GameResult Model
   var gameResult = {};

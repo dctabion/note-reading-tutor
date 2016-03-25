@@ -118,3 +118,23 @@ var midiNoteToNoteName = {
   "22": "A#0",
   "21": "A0"
 };
+
+var keyCodeToNoteName4LowRangeCard = {
+  71 : "G4",
+  70 : "F4",
+  69 : "E4",
+  68 : "D4",
+  67 : "C4",
+  66 : "B4",
+  65 : "A4"
+};
+
+var keyCodeToNoteName4HiRangeCard = {
+  71 : "G5",
+  70 : "F5",
+  69 : "E5",
+  68 : "D5",
+  67 : "C5",
+  66 : "B4",
+  65 : "A4"
+};

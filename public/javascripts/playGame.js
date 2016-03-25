@@ -16,8 +16,11 @@ flashApp.soundfont.soundfont = null;
 flashApp.soundfont.instrument = null;
 
 flashApp.misc = flashApp.misc || {};
+flashApp.misc.inputMode = "keyboard";
+
 flashApp.game = flashApp.game || {};
 flashApp.game.inProgress = false;
+
 
 // Start Game App Here ======================
 window.onload = function() {
