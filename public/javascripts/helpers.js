@@ -108,7 +108,7 @@ function checkIfCorrectAnswer(noteName) {
   // does it match the flash card?
   if (noteName == flashApp.game.flashCards[flashApp.game.currentCardIndex]) {
     console.log('correct!');
-    flashApp.els.statusMsg.innerHTML = noteName + " CORRECT!";
+    flashApp.els.statusMsg.innerHTML = noteName.charAt(0) + " CORRECT!";
 
     // Let transition finish and continue processing correctAnswer logic
     flashApp.els.userNote.classList.add('correctAnswer');
@@ -129,7 +129,7 @@ function checkIfCorrectAnswer(noteName) {
 
         // Display the results of the game
         // TODO Make pretty
-        flashApp.els.statusMsg.innerHTML += "<br>GREAT JOB!!! Deck completed!<BR>Results: ";
+        flashApp.els.statusMsg.innerHTML = "<br>DECK COMPLETED! GREAT JOB!!! Results:<BR>";
         for (var key in flashApp.game.results) {
           flashApp.els.statusMsg.innerHTML += key;
           flashApp.els.statusMsg.innerHTML += ':';
@@ -158,7 +158,7 @@ function checkIfCorrectAnswer(noteName) {
     console.log('wrong!');
 
     // Tell user he/she is wrong
-    flashApp.els.statusMsg.innerHTML = noteName + " INCORRECT! <BR>Try again!";
+    flashApp.els.statusMsg.innerHTML = noteName.charAt(0) + " INCORRECT! <BR>Try again!";
 
     // Animate
     flashApp.els.userNote.classList.add('incorrectAnswer');
